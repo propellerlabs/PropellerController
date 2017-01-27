@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5266CC5F1E3BCB5900271B28 /* NameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266CC5E1E3BCB5900271B28 /* NameData.swift */; };
+		5266CC611E3BCC2F00271B28 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266CC601E3BCC2F00271B28 /* TableController.swift */; };
+		5266CC641E3BD12300271B28 /* StubbedGeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266CC631E3BD12300271B28 /* StubbedGeneralTableController.swift */; };
+		5266CC681E3BF1BE00271B28 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266CC661E3BF1BE00271B28 /* NameCell.swift */; };
+		5266CC691E3BF1BE00271B28 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5266CC671E3BF1BE00271B28 /* NameCell.xib */; };
+		5266CC6A1E3BFF0500271B28 /* NameCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 5266CC661E3BF1BE00271B28 /* NameCell.swift */; };
+		5266CC6C1E3C01BD00271B28 /* StubUITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266CC6B1E3C01BD00271B28 /* StubUITableView+Extension.swift */; };
 		52DF218D1E3A6D9600BEFE27 /* PropellerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DF21831E3A6D9600BEFE27 /* PropellerController.framework */; };
 		52DF21921E3A6D9600BEFE27 /* PropellerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21911E3A6D9600BEFE27 /* PropellerControllerTests.swift */; };
 		52DF21941E3A6D9600BEFE27 /* PropellerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 52DF21861E3A6D9600BEFE27 /* PropellerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52DF219E1E3A6ED700BEFE27 /* GeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF219D1E3A6ED700BEFE27 /* GeneralTableController.swift */; };
+		52DF21A01E3A6F4A00BEFE27 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF219F1E3A6F4A00BEFE27 /* UITableView+Extension.swift */; };
+		52DF21A21E3A754100BEFE27 /* GeneralCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A11E3A754100BEFE27 /* GeneralCollectionViewController.swift */; };
+		52DF21A41E3A75B400BEFE27 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A31E3A75B400BEFE27 /* UICollectionView+Extension.swift */; };
+		52DF21A61E3A76FF00BEFE27 /* GeneralSelectableTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A51E3A76FF00BEFE27 /* GeneralSelectableTableController.swift */; };
+		52DF21A81E3A78CE00BEFE27 /* TableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +36,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5266CC5E1E3BCB5900271B28 /* NameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameData.swift; sourceTree = "<group>"; };
+		5266CC601E3BCC2F00271B28 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		5266CC631E3BD12300271B28 /* StubbedGeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbedGeneralTableController.swift; sourceTree = "<group>"; };
+		5266CC661E3BF1BE00271B28 /* NameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameCell.swift; path = PropellerControllerTests/Cells/NameCell.swift; sourceTree = SOURCE_ROOT; };
+		5266CC671E3BF1BE00271B28 /* NameCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NameCell.xib; path = PropellerControllerTests/Cells/NameCell.xib; sourceTree = SOURCE_ROOT; };
+		5266CC6B1E3C01BD00271B28 /* StubUITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StubUITableView+Extension.swift"; sourceTree = "<group>"; };
 		52DF21831E3A6D9600BEFE27 /* PropellerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PropellerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF21861E3A6D9600BEFE27 /* PropellerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PropellerController.h; sourceTree = "<group>"; };
 		52DF21871E3A6D9600BEFE27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52DF218C1E3A6D9600BEFE27 /* PropellerControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PropellerControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF21911E3A6D9600BEFE27 /* PropellerControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropellerControllerTests.swift; sourceTree = "<group>"; };
 		52DF21931E3A6D9600BEFE27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52DF219D1E3A6ED700BEFE27 /* GeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableController.swift; sourceTree = "<group>"; };
+		52DF219F1E3A6F4A00BEFE27 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		52DF21A11E3A754100BEFE27 /* GeneralCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewController.swift; sourceTree = "<group>"; };
+		52DF21A31E3A75B400BEFE27 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		52DF21A51E3A76FF00BEFE27 /* GeneralSelectableTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSelectableTableController.swift; sourceTree = "<group>"; };
+		52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +75,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5266CC5D1E3BCB3400271B28 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5266CC5E1E3BCB5900271B28 /* NameData.swift */,
+				5266CC601E3BCC2F00271B28 /* TableController.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5266CC621E3BD11300271B28 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				5266CC631E3BD12300271B28 /* StubbedGeneralTableController.swift */,
+				5266CC6B1E3C01BD00271B28 /* StubUITableView+Extension.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		5266CC651E3BF19900271B28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5266CC661E3BF1BE00271B28 /* NameCell.swift */,
+				5266CC671E3BF1BE00271B28 /* NameCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		52DF21791E3A6D9600BEFE27 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +124,11 @@
 			isa = PBXGroup;
 			children = (
 				52DF21861E3A6D9600BEFE27 /* PropellerController.h */,
+				52DF219D1E3A6ED700BEFE27 /* GeneralTableController.swift */,
+				52DF21A11E3A754100BEFE27 /* GeneralCollectionViewController.swift */,
+				52DF21A51E3A76FF00BEFE27 /* GeneralSelectableTableController.swift */,
+				52DF219F1E3A6F4A00BEFE27 /* UITableView+Extension.swift */,
+				52DF21A31E3A75B400BEFE27 /* UICollectionView+Extension.swift */,
 				52DF21871E3A6D9600BEFE27 /* Info.plist */,
 			);
 			path = PropellerController;
@@ -80,7 +137,11 @@
 		52DF21901E3A6D9600BEFE27 /* PropellerControllerTests */ = {
 			isa = PBXGroup;
 			children = (
+				5266CC651E3BF19900271B28 /* Cells */,
+				5266CC621E3BD11300271B28 /* Stubs */,
+				5266CC5D1E3BCB3400271B28 /* Models */,
 				52DF21911E3A6D9600BEFE27 /* PropellerControllerTests.swift */,
+				52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */,
 				52DF21931E3A6D9600BEFE27 /* Info.plist */,
 			);
 			path = PropellerControllerTests;
@@ -148,6 +209,7 @@
 				TargetAttributes = {
 					52DF21821E3A6D9600BEFE27 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					52DF218B1E3A6D9600BEFE27 = {
@@ -186,6 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5266CC691E3BF1BE00271B28 /* NameCell.xib in Resources */,
+				5266CC6A1E3BFF0500271B28 /* NameCell.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +260,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DF21A41E3A75B400BEFE27 /* UICollectionView+Extension.swift in Sources */,
+				52DF21A61E3A76FF00BEFE27 /* GeneralSelectableTableController.swift in Sources */,
+				52DF219E1E3A6ED700BEFE27 /* GeneralTableController.swift in Sources */,
+				52DF21A01E3A6F4A00BEFE27 /* UITableView+Extension.swift in Sources */,
+				52DF21A21E3A754100BEFE27 /* GeneralCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5266CC681E3BF1BE00271B28 /* NameCell.swift in Sources */,
+				5266CC6C1E3C01BD00271B28 /* StubUITableView+Extension.swift in Sources */,
+				5266CC611E3BCC2F00271B28 /* TableController.swift in Sources */,
+				5266CC641E3BD12300271B28 /* StubbedGeneralTableController.swift in Sources */,
+				52DF21A81E3A78CE00BEFE27 /* TableControllerTests.swift in Sources */,
+				5266CC5F1E3BCB5900271B28 /* NameData.swift in Sources */,
 				52DF21921E3A6D9600BEFE27 /* PropellerControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +395,7 @@
 		52DF21981E3A6D9600BEFE27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -331,6 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,6 +415,7 @@
 		52DF21991E3A6D9600BEFE27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -356,6 +434,7 @@
 		52DF219B1E3A6D9600BEFE27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PropellerControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerControllerTests;
@@ -367,6 +446,7 @@
 		52DF219C1E3A6D9600BEFE27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = PropellerControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerControllerTests;
@@ -394,6 +474,7 @@
 				52DF21991E3A6D9600BEFE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52DF219A1E3A6D9600BEFE27 /* Build configuration list for PBXNativeTarget "PropellerControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +483,7 @@
 				52DF219C1E3A6D9600BEFE27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
