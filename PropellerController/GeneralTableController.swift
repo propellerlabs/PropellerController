@@ -69,6 +69,12 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     var willDisplayHeaderView: (UIView) -> Void = { _ in }
     
+    //MARK: - DequeCell - 
+    
+    func loadCellFrom(table tableView: UITableView, atIndexPath indexPath: IndexPath) -> CellType? {
+        return tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)
+    }
+    
     //MARK: - UITableViewDelegate/DataSource -
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -89,7 +95,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath) else {
+        guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return UITableViewCell()
         }
         let data = dataSource[indexPath.row]
@@ -99,13 +105,13 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectIndex(indexPath.row)
-        let cell = tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)!
+        let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
         let data = dataSource[indexPath.row]
         didSelectCell(cell, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)!
+        let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
         let data = dataSource[indexPath.row]
         didDeselectCell(cell, data, indexPath)
     }
