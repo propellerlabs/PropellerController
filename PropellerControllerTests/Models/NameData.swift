@@ -23,5 +23,5 @@ let testNames = [
         NameData(first: "Rob"),
         NameData(first: "Cob"),
         NameData(first: "Dob"),
-        NameData(first: "Knob"),
+        NameData(first: "Knob")
 ]

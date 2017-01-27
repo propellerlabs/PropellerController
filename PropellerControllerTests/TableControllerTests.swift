@@ -37,25 +37,37 @@ class TableControllerTests: XCTestCase {
         }
     }
     
-    func testRowHeightSet() {
+    func testFireCellLoaded() {
         
         let table = UITableView()
-        window?.addSubview(table)
         
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
         controller.rowHeight = 80
     
         controller.cellLoaded = { cell, data, iPath in
+            XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
             XCTAssert(iPath.section == 0)
         }
         
         let indexPath = IndexPath(row: 2, section: 0)
-        let cell = controller.tableView(table, cellForRowAt: indexPath)
+        let _ = controller.tableView(table, cellForRowAt: indexPath)
+    }
+    
+    func testCellHeight() {
         
-        XCTAssert(cell.reuseIdentifier == "NameCell", "Invalid reuseIdentifier \(cell.reuseIdentifier) != \"NameCell\"")
-        XCTAssert(cell.frame.height == controller.rowHeight, "wrong cell height: \(cell.frame.height)")
-        XCTAssert(controller.dataSource.count == testNames.count)
+        let table = UITableView()
+        
+        let controller = TableController.nameSelection(table)
+        controller.dataSource = testNames
+        controller.rowHeight = 80
+        
+        controller.willDisplayCell = { cell, data, iPath in
+            XCTAssert(cell.frame.height == 80, "incorrect cell height on `willDisplayCell`")
+        }
+        let indexPath = IndexPath(row: 2, section: 0)
+        let _ = controller.tableView(table, cellForRowAt: indexPath)
+        XCTAssert(controller.tableView(table, heightForRowAt: indexPath) == 80, "incorrect cell height from `heightForRowAt`")
     }
 }
