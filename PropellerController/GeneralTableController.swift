@@ -8,18 +8,27 @@
 
 import UIKit
 
+public enum ControllerCellTypeOption {
+    case classOnly
+    case storyboard
+    case xibAuto
+    case xibManual
+}
 
 public class GeneralTableController<CellType: UITableViewCell,
                             DataType>: NSObject, UITableViewDataSource, UITableViewDelegate {
 
-    typealias CallbackType = (CellType, DataType, IndexPath) -> Void
+    public typealias CallbackType = (CellType, DataType, IndexPath) -> Void
     
-    var rowHeight: CGFloat = 44
-    var headerHeight: CGFloat = 0
+    public var rowHeight: CGFloat = 44
+    public var headerHeight: CGFloat = 0
     var flaggedIndex: Int = -1
     var flaggedState: Bool = false
     
-    var dynamicRowHeights = false {
+    var cellTypeOption: ControllerCellTypeOption = .xibAuto
+    var customIdentifier: String = "DefaultCell"
+    
+    public var dynamicRowHeights = false {
         willSet {
             if newValue == true {
                 tableView?.rowHeight = UITableViewAutomaticDimension
@@ -27,7 +36,7 @@ public class GeneralTableController<CellType: UITableViewCell,
         }
     }
     
-    var dataSource = [DataType]() {
+    public var dataSource = [DataType]() {
         didSet { tableView?.reloadData() }
     }
     
@@ -36,43 +45,61 @@ public class GeneralTableController<CellType: UITableViewCell,
             tableView?.delegate = self
             tableView?.dataSource = self
             registerCell()
-            print(CellType.self)
             tableView?.estimatedRowHeight = 44.0
         }
     }
+
+    public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
+                customIdentifier: String = "DefaultCell") {
+        self.init()
+        self.cellTypeOption = cellTypeOption
+        self.customIdentifier = customIdentifier
+    }
     
     func registerCell() {
-        tableView?.useCellOfType(CellType.self)
+        switch cellTypeOption {
+        case .xibAuto:
+            tableView?.useCellOfType(CellType.self)
+        case .xibManual:
+            tableView.useCellOfType(CellType.self, customIdentifier: customIdentifier)
+        case .classOnly, .storyboard:
+            tableView.register(CellType.self, forCellReuseIdentifier: customIdentifier)
+        }
     }
     
     //MARK: - Callback on Cell Actions -
     
-    var willDisplayCell: CallbackType = { _, _, _ in }
+    public var willDisplayCell: CallbackType = { _, _, _ in }
     
-    var cellLoaded: CallbackType = { _, _, _ in }
+    public var cellLoaded: CallbackType = { _, _, _ in }
     
-    var didSelectCell: CallbackType = { _, _, _ in }
+    public var didSelectCell: CallbackType = { _, _, _ in }
     
-    var didDeselectCell: CallbackType = { _, _, _ in }
+    public var didDeselectCell: CallbackType = { _, _, _ in }
     
-    var didSelectIndex: (Int) -> Void = { _ in }
+    public var didSelectIndex: (Int) -> Void = { _ in }
     
     //MARK: - ScrollViewDelegate Actions -
     
-    var viewDidScroll = {}
+    public var viewDidScroll = {}
 
     //MARK: - header/footer Actions -
     
-    var headerForSection: (Int) -> UIView? = { _ in return nil }
+    public var headerForSection: (Int) -> UIView? = { _ in return nil }
     
-    var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
+    public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
     
-    var willDisplayHeaderView: (UIView) -> Void = { _ in }
+    public var willDisplayHeaderView: (UIView) -> Void = { _ in }
     
     //MARK: - DequeCell - 
     
     func loadCellFrom(table tableView: UITableView, atIndexPath indexPath: IndexPath) -> CellType? {
-        return tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)
+        switch cellTypeOption {
+        case .xibAuto, .xibManual:
+            return tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)
+        case .classOnly, .storyboard:
+            return tableView.dequeueReusableCell(withIdentifier: customIdentifier) as? CellType
+        }
     }
     
     //MARK: - UITableViewDelegate/DataSource -
