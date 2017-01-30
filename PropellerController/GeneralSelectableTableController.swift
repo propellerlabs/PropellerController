@@ -20,8 +20,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         }
     }
     
-    /// toggle the selected state of the cell
-    /// - Returns: selected state of cell after toggle is made true: selected, false: unselected
+    /// toggle the selected state of the associated cell data in `selectionSource`
     func toggleSelection(data: DataType, cell: CellType, indexPath: IndexPath) {
         if selectionSource.contains(data) {
             selectionSource.remove(data)
