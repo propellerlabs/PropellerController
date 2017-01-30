@@ -30,7 +30,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         }
     }
     
-    override public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectIndex(indexPath.row)
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return
@@ -43,7 +43,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         didSelectCell(cell, data, indexPath)
     }
     
-    override public func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return UITableViewCell()
         }
