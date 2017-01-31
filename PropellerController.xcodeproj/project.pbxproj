@@ -12,6 +12,7 @@
 		E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D26A1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift */; };
 		E309D26D1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E309D26C1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib */; };
 		E309D26F1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D26E1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift */; };
+		E309D2711E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D2701E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift */; };
 		E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */; };
 		E3F513FB1E4100D5002CDA10 /* GeneralSelectableTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E41E4100D5002CDA10 /* GeneralSelectableTableController.swift */; };
 		E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */; };
@@ -48,6 +49,7 @@
 		E309D26A1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		E309D26C1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
 		E309D26E1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSelectableTableControllerTests.swift; sourceTree = "<group>"; };
+		E309D2701E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewControllerTests.swift; sourceTree = "<group>"; };
 		E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewController.swift; sourceTree = "<group>"; };
 		E3F513E41E4100D5002CDA10 /* GeneralSelectableTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSelectableTableController.swift; sourceTree = "<group>"; };
 		E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				E3F513F21E4100D5002CDA10 /* Models */,
 				E3F513F61E4100D5002CDA10 /* Stubs */,
 				E309D2691E4108560052ACD1 /* Views */,
+				E309D2701E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift */,
 				E309D26E1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift */,
 				E3F513F01E4100D5002CDA10 /* GeneralTableControllerTests.swift */,
 				E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */,
@@ -307,6 +310,7 @@
 				E3F514171E4102F9002CDA10 /* StubbedGeneralTableController.swift in Sources */,
 				E3F514121E41023D002CDA10 /* TableController.swift in Sources */,
 				E3F5140F1E410237002CDA10 /* TestCollectionViewCell.swift in Sources */,
+				E309D2711E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift in Sources */,
 				E3F514111E41023D002CDA10 /* NameData.swift in Sources */,
 				E3F514131E410242002CDA10 /* GeneralTableControllerTests.swift in Sources */,
 				E3F5140D1E410237002CDA10 /* NameCell.swift in Sources */,
