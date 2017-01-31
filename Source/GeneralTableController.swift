@@ -82,7 +82,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     //MARK: - ScrollViewDelegate Actions -
     
-    public var viewDidScroll = {}
+    public var viewDidScroll:(UIScrollView) -> Void = { _ in }
 
     //MARK: - header/footer Actions -
     
@@ -96,9 +96,9 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     func loadCellFrom(table tableView: UITableView, atIndexPath indexPath: IndexPath) -> CellType? {
         switch cellTypeOption {
-        case .xibAuto, .xibManual:
+        case .xibAuto:
             return tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)
-        case .classOnly, .storyboard:
+        case .classOnly, .storyboard, .xibManual:
             return tableView.dequeueReusableCell(withIdentifier: customIdentifier) as? CellType
         }
     }
@@ -155,7 +155,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        viewDidScroll()
+        viewDidScroll(scrollView)
     }
     
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -164,18 +164,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     public func scrollToBottom() {
         tableView.layoutIfNeeded()
-        tableView.contentOffset.y = tableView.contentSize.height - tableView.frame.height
-    }
-    
-    //disallows tableview scrolling when content is <= height of view to persist messages at bottom instead of top
-    public func determineIfTableScrollAllowed() {
-        tableView?.layoutIfNeeded()
-        if tableView.contentSize.height <= tableView.frame.height {
-            tableView.isScrollEnabled = false
-        } else {
-            tableView.isScrollEnabled = true
-        }
+        let target = tableView.contentSize.height - tableView.frame.height
+        tableView.contentOffset.y = target < 0 ? 0 : target
     }
 }
-
-
