@@ -11,8 +11,8 @@ import UIKit
 extension UITableView {
     
     /// **NOTE:** `identifier/xibName/classname` must all be identical
-    func useCellOfType(_ cellType: UITableViewCell.Type) {
-        let identifier = String(describing: cellType)
+    func useCellOfType(_ cellType: UITableViewCell.Type, customIdentifier: String? = nil) {
+        let identifier = customIdentifier ?? String(describing: cellType)
         let nib = UINib(nibName: identifier, bundle: nil)
         register(nib, forCellReuseIdentifier: identifier)
     }
