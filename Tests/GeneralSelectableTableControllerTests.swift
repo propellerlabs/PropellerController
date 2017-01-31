@@ -79,6 +79,7 @@ class GeneralSelectableTableControllerTests: XCTestCase {
         tableController.tableView(tableView, didSelectRowAt: indexPathOne)
         tableController.tableView(tableView, didSelectRowAt: indexPathTwo)
         
+        XCTAssert(tableController.tableView.allowsMultipleSelection == true)
         XCTAssert(tableView.indexPathsForSelectedRows?.count == 2)
         XCTAssert(tableController.selectionSource.count == 2)
     }
