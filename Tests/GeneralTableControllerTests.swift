@@ -243,14 +243,4 @@ class GeneralTableControllerTests: XCTestCase {
         controller.scrollToBottom()
         waitForExpectations(timeout: 2.0, handler: nil)
     }
-    
-    //disallows tableview scrolling when content is <= height of view to persist messages at bottom instead of top
-    public func testDetermineIfTableScrollAllowed() {
-//        tableView?.layoutIfNeeded()
-//        if tableView.contentSize.height <= tableView.frame.height {
-//            tableView.isScrollEnabled = false
-//        } else {
-//            tableView.isScrollEnabled = true
-//        }
-    }
 }
