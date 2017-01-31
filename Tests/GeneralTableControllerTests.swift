@@ -68,6 +68,14 @@ class GeneralTableControllerTests: XCTestCase {
         XCTAssert(controller.tableView(table, heightForRowAt: indexPath) == 80, "incorrect cell height from `heightForRowAt`")
     }
     
+    func testSetDynamicRowHeights() {
+        let table = UITableView()
+        let controller = TableController.nameSelection(table)
+        controller.dataSource = testNames
+        controller.dynamicRowHeights = true
+        XCTAssert(table.rowHeight == UITableViewAutomaticDimension, "did not assign dynamic row heights value to tableView")
+    }
+    
     func testDidSelectCell() {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
@@ -157,7 +165,6 @@ class GeneralTableControllerTests: XCTestCase {
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
         let testHeader = UIView()
-        
         controller.headerForSection = { section in
             XCTAssert(section == 0)
             return testHeader
@@ -174,6 +181,52 @@ class GeneralTableControllerTests: XCTestCase {
         XCTAssert(testHeader === view)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
+    
+    //MARK: - Set CellOptions -
+    
+    func testManualXib() {
+        let expectation = self.expectation(description: "should load cell")
+        let identifier = "NameCellB"
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .xibManual,
+                                                                    customIdentifier: identifier)
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
+        let table = UITableView(frame: frame)
+        controller.tableView = table
+        controller.dataSource = testNames
+        controller.cellLoaded = { cell, data, iPath in
+            XCTAssert(cell.reuseIdentifier == identifier)
+            XCTAssert(data.first == testNames[iPath.row].first)
+            XCTAssert(iPath.row == 2)
+            XCTAssert(iPath.section == 0)
+            expectation.fulfill()
+        }
+        let indexPath = IndexPath(row: 2, section: 0)
+        let _ = controller.tableView(table, cellForRowAt: indexPath)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testClassOnlyCell() {
+        let expectation = self.expectation(description: "should call `cellLoaded`")
+        let identifier = "NameCell"
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .classOnly,
+                                                                         customIdentifier: identifier)
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
+        let table = UITableView(frame: frame)
+        controller.tableView = table
+        controller.dataSource = testNames
+        controller.cellLoaded = { cell, data, iPath in
+            XCTAssert(cell.reuseIdentifier == identifier)
+            XCTAssert(data.first == testNames[iPath.row].first)
+            XCTAssert(iPath.row == 2)
+            XCTAssert(iPath.section == 0)
+            expectation.fulfill()
+        }
+        let indexPath = IndexPath(row: 2, section: 0)
+        let _ = controller.tableView(table, cellForRowAt: indexPath)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    //TODO: - test for storyboard cell -
     
     //MARK: - Tests for Sroll functionality -
     
@@ -230,6 +283,7 @@ class GeneralTableControllerTests: XCTestCase {
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
         table.contentSize.height = 20000
+        
         //test scroll to bottom position, if contentSize < frame height sould just goto to y = 0
         var expectedBottomY = table.contentSize.height - frame.height
         if expectedBottomY < 0 {

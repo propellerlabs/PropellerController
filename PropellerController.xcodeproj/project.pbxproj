@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5200B0E91E4142D500A328DB /* NameAgainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200B0E71E4142D500A328DB /* NameAgainCell.swift */; };
+		5200B0EA1E4142D500A328DB /* NameAgainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5200B0E81E4142D500A328DB /* NameAgainCell.xib */; };
 		52DF218D1E3A6D9600BEFE27 /* PropellerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DF21831E3A6D9600BEFE27 /* PropellerController.framework */; };
 		E309D2681E4107330052ACD1 /* UITableViewExtentionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D2671E4107330052ACD1 /* UITableViewExtentionTests.swift */; };
 		E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D26A1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5200B0E71E4142D500A328DB /* NameAgainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameAgainCell.swift; sourceTree = "<group>"; };
+		5200B0E81E4142D500A328DB /* NameAgainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameAgainCell.xib; sourceTree = "<group>"; };
 		52DF21831E3A6D9600BEFE27 /* PropellerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PropellerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF218C1E3A6D9600BEFE27 /* PropellerControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PropellerControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E309D2671E4107330052ACD1 /* UITableViewExtentionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtentionTests.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 		E3F513EB1E4100D5002CDA10 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5200B0E71E4142D500A328DB /* NameAgainCell.swift */,
+				5200B0E81E4142D500A328DB /* NameAgainCell.xib */,
 				E3F513EC1E4100D5002CDA10 /* NameCell.swift */,
 				E3F513ED1E4100D5002CDA10 /* NameCell.xib */,
 				E3F513EE1E4100D5002CDA10 /* TestCollectionViewCell.swift */,
@@ -277,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5200B0EA1E4142D500A328DB /* NameAgainCell.xib in Resources */,
 				E3F514101E410237002CDA10 /* TestCollectionViewCell.xib in Resources */,
 				E3F5140E1E410237002CDA10 /* NameCell.xib in Resources */,
 			);
@@ -313,6 +320,7 @@
 				E309D26F1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift in Sources */,
 				E3F514141E410242002CDA10 /* PropellerControllerTests.swift in Sources */,
 				E309D2681E4107330052ACD1 /* UITableViewExtentionTests.swift in Sources */,
+				5200B0E91E4142D500A328DB /* NameAgainCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

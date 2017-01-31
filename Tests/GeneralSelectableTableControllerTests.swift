@@ -73,8 +73,7 @@ class GeneralSelectableTableControllerTests: XCTestCase {
         tableController.tableView = tableView
         tableController.allowsMultipleSelection = true
         tableController.dataSource = ["Item one", "Item two"]
-
-        
+ 
         let indexPath = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 1, section: 0)
         

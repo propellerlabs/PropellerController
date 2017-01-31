@@ -14,7 +14,7 @@ extension UITableView {
     func useCellOfType(_ cellType: UITableViewCell.Type, customIdentifier: String? = nil) {
         let identifier = customIdentifier ?? String(describing: cellType)
         let bundle = Bundle(for: cellType.classForCoder())
-        let nib = UINib(nibName: identifier, bundle: bundle)
+        let nib = UINib(nibName: String(describing: cellType), bundle: bundle)
         register(nib, forCellReuseIdentifier: identifier)
     }
     
