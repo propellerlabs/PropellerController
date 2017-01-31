@@ -27,7 +27,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     var flaggedState: Bool = false
     
     var cellTypeOption: ControllerCellTypeOption = .xibAuto
-    var customIdentifier = "DefaultCell"
+    var customIdentifier: String?
     
     public var dynamicRowHeights = false {
         willSet {
@@ -51,7 +51,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
 
     public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
-                customIdentifier: String = "DefaultCell") {
+                            customIdentifier: String? = nil) {
         self.init()
         self.cellTypeOption = cellTypeOption
         self.customIdentifier = customIdentifier
@@ -62,9 +62,15 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .xibAuto:
             tableView?.useCellOfType(CellType.self)
         case .xibManual:
-            tableView.useCellOfType(CellType.self, customIdentifier: customIdentifier)
+            guard let identifier = customIdentifier else {
+                assert(false, ".xibManual requires cell `customIdentifier` ")
+            }
+            tableView.useCellOfType(CellType.self, customIdentifier: identifier)
         case .classOnly, .storyboard:
-            tableView.register(CellType.self, forCellReuseIdentifier: customIdentifier)
+            guard let identifier = customIdentifier else {
+                assert(false, "\(cellTypeOption) requires cell `customIdentifier` ")
+            }
+            tableView.register(CellType.self, forCellReuseIdentifier: identifier)
         }
     }
     
@@ -99,7 +105,10 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .xibAuto:
             return tableView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)
         case .classOnly, .storyboard, .xibManual:
-            return tableView.dequeueReusableCell(withIdentifier: customIdentifier) as? CellType
+            guard let identifier = customIdentifier else {
+                assert(false, "\(cellTypeOption) requires cell `customIdentifier`")
+            }
+            return tableView.dequeueReusableCell(withIdentifier: identifier) as? CellType
         }
     }
     
