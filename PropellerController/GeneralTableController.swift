@@ -22,11 +22,12 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     public var rowHeight: CGFloat = 44
     public var headerHeight: CGFloat = 0
+    
     var flaggedIndex: Int = -1
     var flaggedState: Bool = false
     
     var cellTypeOption: ControllerCellTypeOption = .xibAuto
-    var customIdentifier: String = "DefaultCell"
+    var customIdentifier = "DefaultCell"
     
     public var dynamicRowHeights = false {
         willSet {

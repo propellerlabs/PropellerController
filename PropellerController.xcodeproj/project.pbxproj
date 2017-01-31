@@ -22,7 +22,7 @@
 		52DF21A21E3A754100BEFE27 /* GeneralCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A11E3A754100BEFE27 /* GeneralCollectionViewController.swift */; };
 		52DF21A41E3A75B400BEFE27 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A31E3A75B400BEFE27 /* UICollectionView+Extension.swift */; };
 		52DF21A61E3A76FF00BEFE27 /* GeneralSelectableTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A51E3A76FF00BEFE27 /* GeneralSelectableTableController.swift */; };
-		52DF21A81E3A78CE00BEFE27 /* TableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */; };
+		52DF21A81E3A78CE00BEFE27 /* GeneralTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF21A71E3A78CE00BEFE27 /* GeneralTableControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,7 @@
 		52DF21A11E3A754100BEFE27 /* GeneralCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewController.swift; sourceTree = "<group>"; };
 		52DF21A31E3A75B400BEFE27 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		52DF21A51E3A76FF00BEFE27 /* GeneralSelectableTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSelectableTableController.swift; sourceTree = "<group>"; };
-		52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableControllerTests.swift; sourceTree = "<group>"; };
+		52DF21A71E3A78CE00BEFE27 /* GeneralTableControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 				5266CC621E3BD11300271B28 /* Stubs */,
 				5266CC5D1E3BCB3400271B28 /* Models */,
 				52DF21911E3A6D9600BEFE27 /* PropellerControllerTests.swift */,
-				52DF21A71E3A78CE00BEFE27 /* TableControllerTests.swift */,
+				52DF21A71E3A78CE00BEFE27 /* GeneralTableControllerTests.swift */,
 				52DF21931E3A6D9600BEFE27 /* Info.plist */,
 			);
 			path = PropellerControllerTests;
@@ -276,7 +276,7 @@
 				5266CC6C1E3C01BD00271B28 /* StubUITableView+Extension.swift in Sources */,
 				5266CC611E3BCC2F00271B28 /* TableController.swift in Sources */,
 				5266CC641E3BD12300271B28 /* StubbedGeneralTableController.swift in Sources */,
-				52DF21A81E3A78CE00BEFE27 /* TableControllerTests.swift in Sources */,
+				52DF21A81E3A78CE00BEFE27 /* GeneralTableControllerTests.swift in Sources */,
 				5266CC5F1E3BCB5900271B28 /* NameData.swift in Sources */,
 				52DF21921E3A6D9600BEFE27 /* PropellerControllerTests.swift in Sources */,
 			);
