@@ -13,7 +13,8 @@ extension UITableView {
     /// **NOTE:** `identifier/xibName/classname` must all be identical
     func useCellOfType(_ cellType: UITableViewCell.Type, customIdentifier: String? = nil) {
         let identifier = customIdentifier ?? String(describing: cellType)
-        let nib = UINib(nibName: identifier, bundle: nil)
+        let bundle = Bundle(for: cellType.classForCoder())
+        let nib = UINib(nibName: identifier, bundle: bundle)
         register(nib, forCellReuseIdentifier: identifier)
     }
     
@@ -36,7 +37,8 @@ extension UITableView {
     
     func register<T: UITableViewHeaderFooterView>(headerFooterViewClass: T.Type) {
         let identifier = String(describing: headerFooterViewClass)
-        let nib = UINib(nibName: identifier, bundle: nil)
+        let bundle = Bundle(for: headerFooterViewClass.classForCoder())
+        let nib = UINib(nibName: identifier, bundle: bundle)
         register(nib, forHeaderFooterViewReuseIdentifier: identifier)
     }
 }
