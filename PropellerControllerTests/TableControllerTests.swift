@@ -44,15 +44,17 @@ class TableControllerTests: XCTestCase {
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
         controller.rowHeight = 80
-    
+        let expectation = self.expectation(description: "Resource should return completion")
         controller.cellLoaded = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
             XCTAssert(iPath.section == 0)
+            expectation.fulfill()
         }
         
         let indexPath = IndexPath(row: 2, section: 0)
         let _ = controller.tableView(table, cellForRowAt: indexPath)
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
     
     func testCellHeight() {
