@@ -11,14 +11,15 @@ import UIKit
 extension UICollectionView {
     
     /// **NOTE:** `identifier/xibName/classname` must all be identical
-    func useCellOfType(_ cellType: UICollectionViewCell.Type) {
+    func useCellOfType<T: UICollectionViewCell>(_ cellType: T.Type) {
         let identifier = String(describing: cellType)
-        let nib = UINib(nibName: identifier, bundle: nil)
+        let bundle = Bundle(for: cellType.classForCoder())
+        let nib = UINib(nibName: identifier, bundle: bundle)
         register(nib, forCellWithReuseIdentifier: identifier)
     }
     
     /// **NOTE:** `identifier/xibName/classname` must all be identical
-    func dequeueReusableCellWithClass<T>(_ cellType: T.Type, forIndexPath indexPath: IndexPath) -> T? {
+    func dequeueReusableCellWithClass<T: UICollectionViewCell>(_ cellType: T.Type, forIndexPath indexPath: IndexPath) -> T? {
         let identifier = String(describing: cellType)
         guard let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? T else {
             return nil
