@@ -11,22 +11,20 @@
 		E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */; };
 		E3F513FB1E4100D5002CDA10 /* GeneralSelectableTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E41E4100D5002CDA10 /* GeneralSelectableTableController.swift */; };
 		E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */; };
-		E3F513FD1E4100D5002CDA10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3F513E61E4100D5002CDA10 /* Info.plist */; };
-		E3F513FE1E4100D5002CDA10 /* PropellerController.h in Headers */ = {isa = PBXBuildFile; fileRef = E3F513E71E4100D5002CDA10 /* PropellerController.h */; };
+		E3F513FE1E4100D5002CDA10 /* PropellerController.h in Headers */ = {isa = PBXBuildFile; fileRef = E3F513E71E4100D5002CDA10 /* PropellerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E81E4100D5002CDA10 /* UICollectionView+Extension.swift */; };
 		E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E91E4100D5002CDA10 /* UITableView+Extension.swift */; };
-		E3F514011E4100D5002CDA10 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EC1E4100D5002CDA10 /* NameCell.swift */; };
-		E3F514021E4100D5002CDA10 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F513ED1E4100D5002CDA10 /* NameCell.xib */; };
-		E3F514031E4100D5002CDA10 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EE1E4100D5002CDA10 /* TestCollectionViewCell.swift */; };
-		E3F514041E4100D5002CDA10 /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F513EF1E4100D5002CDA10 /* TestCollectionViewCell.xib */; };
-		E3F514051E4100D5002CDA10 /* GeneralTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F01E4100D5002CDA10 /* GeneralTableControllerTests.swift */; };
-		E3F514061E4100D5002CDA10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3F513F11E4100D5002CDA10 /* Info.plist */; };
-		E3F514071E4100D5002CDA10 /* NameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F31E4100D5002CDA10 /* NameData.swift */; };
-		E3F514081E4100D5002CDA10 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F41E4100D5002CDA10 /* TableController.swift */; };
-		E3F514091E4100D5002CDA10 /* PropellerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */; };
-		E3F5140A1E4100D5002CDA10 /* StubbedGeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */; };
 		E3F5140B1E4100D5002CDA10 /* StubUITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F81E4100D5002CDA10 /* StubUITableView+Extension.swift */; };
-		E3F5140C1E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */; };
+		E3F5140D1E410237002CDA10 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EC1E4100D5002CDA10 /* NameCell.swift */; };
+		E3F5140E1E410237002CDA10 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F513ED1E4100D5002CDA10 /* NameCell.xib */; };
+		E3F5140F1E410237002CDA10 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EE1E4100D5002CDA10 /* TestCollectionViewCell.swift */; };
+		E3F514101E410237002CDA10 /* TestCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F513EF1E4100D5002CDA10 /* TestCollectionViewCell.xib */; };
+		E3F514111E41023D002CDA10 /* NameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F31E4100D5002CDA10 /* NameData.swift */; };
+		E3F514121E41023D002CDA10 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F41E4100D5002CDA10 /* TableController.swift */; };
+		E3F514131E410242002CDA10 /* GeneralTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F01E4100D5002CDA10 /* GeneralTableControllerTests.swift */; };
+		E3F514141E410242002CDA10 /* PropellerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */; };
+		E3F514151E410242002CDA10 /* UICollectionView+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */; };
+		E3F514171E4102F9002CDA10 /* StubbedGeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,10 +249,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F514061E4100D5002CDA10 /* Info.plist in Resources */,
-				E3F514021E4100D5002CDA10 /* NameCell.xib in Resources */,
-				E3F513FD1E4100D5002CDA10 /* Info.plist in Resources */,
-				E3F514041E4100D5002CDA10 /* TestCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F514101E410237002CDA10 /* TestCollectionViewCell.xib in Resources */,
+				E3F5140E1E410237002CDA10 /* NameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,19 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3F5140C1E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift in Sources */,
-				E3F514011E4100D5002CDA10 /* NameCell.swift in Sources */,
 				E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */,
 				E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */,
-				E3F514051E4100D5002CDA10 /* GeneralTableControllerTests.swift in Sources */,
 				E3F5140B1E4100D5002CDA10 /* StubUITableView+Extension.swift in Sources */,
-				E3F514031E4100D5002CDA10 /* TestCollectionViewCell.swift in Sources */,
-				E3F5140A1E4100D5002CDA10 /* StubbedGeneralTableController.swift in Sources */,
-				E3F514091E4100D5002CDA10 /* PropellerControllerTests.swift in Sources */,
 				E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */,
 				E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */,
-				E3F514071E4100D5002CDA10 /* NameData.swift in Sources */,
-				E3F514081E4100D5002CDA10 /* TableController.swift in Sources */,
 				E3F513FB1E4100D5002CDA10 /* GeneralSelectableTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F514151E410242002CDA10 /* UICollectionView+ExtensionTests.swift in Sources */,
+				E3F514171E4102F9002CDA10 /* StubbedGeneralTableController.swift in Sources */,
+				E3F514121E41023D002CDA10 /* TableController.swift in Sources */,
+				E3F5140F1E410237002CDA10 /* TestCollectionViewCell.swift in Sources */,
+				E3F514111E41023D002CDA10 /* NameData.swift in Sources */,
+				E3F514131E410242002CDA10 /* GeneralTableControllerTests.swift in Sources */,
+				E3F5140D1E410237002CDA10 /* NameCell.swift in Sources */,
+				E3F514141E410242002CDA10 /* PropellerControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +411,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PropellerController/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerController;
@@ -435,7 +431,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PropellerController/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerController;
@@ -449,7 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = PropellerControllerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -461,7 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = PropellerControllerTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.propellerlabs.PropellerControllerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
