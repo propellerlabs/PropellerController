@@ -42,6 +42,19 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         didSelectCell(cell, data, indexPath)
     }
     
+    
+    public override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
+            return
+        }
+        
+        let data = dataSource[indexPath.row]
+
+        toggleSelection(data: data, cell: cell, indexPath: indexPath)
+
+        didDeselectCell(cell, data, indexPath)
+    }
+    
     public override func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return UITableViewCell()
