@@ -14,12 +14,4 @@ class StubbedGeneralTableController<CellType:UITableViewCell,DataType>: GeneralT
     func compareMyself(with other: Any?) -> Bool {
         return other is StubbedGeneralTableController
     }
-    
-    override func loadCellFrom(table tableView: UITableView, atIndexPath indexPath: IndexPath) -> CellType? {
-        return CellType()
-    }
-    
-    override func registerCell() {
-        tableView?.stub_useCellOfType(CellType.self)
-    }
 }

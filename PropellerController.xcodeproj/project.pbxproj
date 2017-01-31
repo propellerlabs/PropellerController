@@ -17,7 +17,6 @@
 		E3F513FE1E4100D5002CDA10 /* PropellerController.h in Headers */ = {isa = PBXBuildFile; fileRef = E3F513E71E4100D5002CDA10 /* PropellerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E81E4100D5002CDA10 /* UICollectionView+Extension.swift */; };
 		E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E91E4100D5002CDA10 /* UITableView+Extension.swift */; };
-		E3F5140B1E4100D5002CDA10 /* StubUITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F81E4100D5002CDA10 /* StubUITableView+Extension.swift */; };
 		E3F5140D1E410237002CDA10 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EC1E4100D5002CDA10 /* NameCell.swift */; };
 		E3F5140E1E410237002CDA10 /* NameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F513ED1E4100D5002CDA10 /* NameCell.xib */; };
 		E3F5140F1E410237002CDA10 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513EE1E4100D5002CDA10 /* TestCollectionViewCell.swift */; };
@@ -63,7 +62,6 @@
 		E3F513F41E4100D5002CDA10 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 		E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropellerControllerTests.swift; sourceTree = "<group>"; };
 		E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbedGeneralTableController.swift; sourceTree = "<group>"; };
-		E3F513F81E4100D5002CDA10 /* StubUITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StubUITableView+Extension.swift"; sourceTree = "<group>"; };
 		E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ExtensionTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */,
-				E3F513F81E4100D5002CDA10 /* StubUITableView+Extension.swift */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
@@ -289,7 +286,6 @@
 				E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */,
 				E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */,
 				E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */,
-				E3F5140B1E4100D5002CDA10 /* StubUITableView+Extension.swift in Sources */,
 				E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */,
 				E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */,
 				E3F513FB1E4100D5002CDA10 /* GeneralSelectableTableController.swift in Sources */,

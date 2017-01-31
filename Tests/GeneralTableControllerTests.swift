@@ -16,10 +16,11 @@ class GeneralTableControllerTests: XCTestCase {
     
     func testControllerConformsToDelegateDataSource() {
         let table = UITableView()
-        let controller = TableController.nameSelection(table)
-        XCTAssert(controller.compareMyself(with: table.delegate),"failed to assign controller as delegate")
-        XCTAssert(controller.compareMyself(with: table.dataSource),"failed to assign controller as dataSource")
-        XCTAssert(!controller.compareMyself(with: table),"controller is not the same type as the table, that makes no sense")
+        let _ = TableController.nameSelection(table)
+        XCTAssert(table.delegate is GeneralTableController<NameCell, NameData>,
+                  "failed to assign controller as delegate")
+        XCTAssert(table.dataSource is GeneralTableController<NameCell, NameData>,
+                  "failed to assign controller as dataSource")
     }
     
     func testControllerDataSourceSet() {
@@ -38,10 +39,10 @@ class GeneralTableControllerTests: XCTestCase {
     }
     
     func testFireCellLoaded() {
+        let expectation = self.expectation(description: "should call `cellLoaded`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
-        let expectation = self.expectation(description: "should call `cellLoaded`")
         controller.cellLoaded = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -68,10 +69,10 @@ class GeneralTableControllerTests: XCTestCase {
     }
     
     func testDidSelectCell() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
-        let expectation = self.expectation(description: "should call `didSelectCell`")
         controller.didSelectCell = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -83,11 +84,27 @@ class GeneralTableControllerTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
-    func testWillDisplayCell() {
+    func testDidDeselectCell() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
+        controller.didDeselectCell = { cell, data, iPath in
+            XCTAssert(data.first == testNames[iPath.row].first)
+            XCTAssert(iPath.row == 2)
+            XCTAssert(iPath.section == 0)
+            expectation.fulfill()
+        }
+        let indexPath = IndexPath(row: 2, section: 0)
+        let _ = controller.tableView(table, didDeselectRowAt: indexPath)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testWillDisplayCell() {
         let expectation = self.expectation(description: "should call `didSelectCell`")
+        let table = UITableView()
+        let controller = TableController.nameSelection(table)
+        controller.dataSource = testNames
         controller.willDisplayCell = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -101,10 +118,10 @@ class GeneralTableControllerTests: XCTestCase {
     }
     
     func testSetTitleForHeaderInSection() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
-        let expectation = self.expectation(description: "should call `didSelectCell`")
         let titleText = "titleTest"
         controller.titleForHeaderInSection = { section in
             XCTAssert(section == 0)
@@ -117,10 +134,10 @@ class GeneralTableControllerTests: XCTestCase {
     }
     
     func testViewForHeaderInSection() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
-        let expectation = self.expectation(description: "should call `didSelectCell`")
         
         let testHeader = UIView()
         
@@ -135,26 +152,105 @@ class GeneralTableControllerTests: XCTestCase {
     }
     
     func testWillDisplayHeaderView() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
         controller.dataSource = testNames
-        let expectation = self.expectation(description: "should call `didSelectCell`")
-        
         let testHeader = UIView()
         
         controller.headerForSection = { section in
             XCTAssert(section == 0)
-            expectation.fulfill()
             return testHeader
         }
-        
         controller.willDisplayHeaderView = { view in
             XCTAssert(view === testHeader)
             expectation.fulfill()
         }
-        
-        let view = controller.tableView(table, viewForHeaderInSection: 0)
+        guard let view = controller.tableView(table, viewForHeaderInSection: 0) else {
+            XCTFail()
+            return
+        }
+        controller.tableView(table, willDisplayHeaderView: view, forSection: 0)
         XCTAssert(testHeader === view)
         waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    //MARK: - Tests for Sroll functionality -
+    
+    func testScrollViewDidScrollCallback() {
+        let expectation = self.expectation(description: "should call `didSelectCell`")
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
+        let table = UITableView(frame: frame)
+        let controller = TableController.nameSelection(table)
+        let scrollToPoint = CGPoint(x:0,y:100)
+        controller.dataSource = testNames
+        controller.viewDidScroll = { scrollView in
+            XCTAssert(scrollView === table)
+            XCTAssert(scrollToPoint == scrollView.contentOffset)
+            expectation.fulfill()
+        }
+        table.setContentOffset(scrollToPoint, animated: false)
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    public func testScrollToBottomHeightMoreThanContentSizeHeight() {
+        let expectation = self.expectation(description: "should move scrollView to bottom")
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
+        let table = UITableView(frame: frame)
+        let controller = TableController.nameSelection(table)
+        controller.dataSource = testNames
+        
+        //test scroll to bottom position, if contentSize < frame height sould just goto to y = 0
+        var expectedBottomY = table.contentSize.height - frame.height
+        if expectedBottomY < 0 {
+            expectedBottomY = 0
+        }
+        controller.viewDidScroll = { scrollView in
+            //should not call scroll, since it should not move 
+            //bc height > contentSize && position.y starts at 0
+            XCTFail()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if (expectedBottomY == frame.origin.y) {
+                XCTAssert(table.contentOffset.y == expectedBottomY)
+                expectation.fulfill()
+            }
+        }
+        controller.scrollToBottom()
+        waitForExpectations(timeout: 2.0, handler: nil)
+        table.layoutIfNeeded()
+        
+
+    }
+    
+    public func testScrollToBottomNormalUse() {
+        let expectation = self.expectation(description: "should move scrollView to bottom")
+        let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
+        let table = UITableView(frame: frame)
+        let controller = TableController.nameSelection(table)
+        controller.dataSource = testNames
+        table.contentSize.height = 20000
+        //test scroll to bottom position, if contentSize < frame height sould just goto to y = 0
+        var expectedBottomY = table.contentSize.height - frame.height
+        if expectedBottomY < 0 {
+            expectedBottomY = 0
+        }
+        controller.viewDidScroll = { scrollView in
+            XCTAssert(scrollView === table)
+            XCTAssert(expectedBottomY == scrollView.contentOffset.y)
+            expectation.fulfill()
+        }
+        controller.scrollToBottom()
+        waitForExpectations(timeout: 2.0, handler: nil)
+    }
+    
+    //disallows tableview scrolling when content is <= height of view to persist messages at bottom instead of top
+    public func testDetermineIfTableScrollAllowed() {
+//        tableView?.layoutIfNeeded()
+//        if tableView.contentSize.height <= tableView.frame.height {
+//            tableView.isScrollEnabled = false
+//        } else {
+//            tableView.isScrollEnabled = true
+//        }
     }
 }
