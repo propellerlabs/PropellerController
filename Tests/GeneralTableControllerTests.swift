@@ -264,7 +264,7 @@ class GeneralTableControllerTests: XCTestCase {
             //bc height > contentSize && position.y starts at 0
             XCTFail()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if (expectedBottomY == frame.origin.y) {
                 XCTAssert(table.contentOffset.y == expectedBottomY)
                 expectation.fulfill()

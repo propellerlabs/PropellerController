@@ -44,41 +44,30 @@ public class GeneralTableController<CellType: UITableViewCell,
     public func setDataSource(_ dataSource: [DataType]) {
         self.dataSource = [dataSource]
     }
+    
     public func setDataSource(_ dataSource: [[DataType]]) {
         self.dataSource = dataSource
     }
     
     public weak var tableView: UITableView! {
         didSet {
-            tableView?.delegate = self
-            tableView?.dataSource = self
-            registerCell()
-            tableView?.estimatedRowHeight = 44.0
+            setupTableView()
         }
     }
+    
+    func setupTableView() {
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        registerCell()
+        tableView?.estimatedRowHeight = 44.0
+    }
+    
 
     public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
                             customIdentifier: String? = nil) {
         self.init()
         self.cellTypeOption = cellTypeOption
         self.customIdentifier = customIdentifier
-    }
-    
-    func registerCell() {
-        switch cellTypeOption {
-        case .xibAuto:
-            tableView?.useCellOfType(CellType.self)
-        case .xibManual:
-            guard let identifier = customIdentifier else {
-                assert(false, ".xibManual requires cell `customIdentifier` ")
-            }
-            tableView.useCellOfType(CellType.self, customIdentifier: identifier)
-        case .classOnly, .storyboard:
-            guard let identifier = customIdentifier else {
-                assert(false, "\(cellTypeOption) requires cell `customIdentifier` ")
-            }
-            tableView.register(CellType.self, forCellReuseIdentifier: identifier)
-        }
     }
     
     //MARK: - Callback on Cell Actions -
@@ -96,7 +85,7 @@ public class GeneralTableController<CellType: UITableViewCell,
     //MARK: - ScrollViewDelegate Actions -
     
     public var viewDidScroll:(UIScrollView) -> Void = { _ in }
-
+    
     //MARK: - header/footer Actions -
     
     public var headerForSection: (Int) -> UIView? = { _ in return nil }
@@ -104,6 +93,27 @@ public class GeneralTableController<CellType: UITableViewCell,
     public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
     
     public var willDisplayHeaderView: (UIView) -> Void = { _ in }
+    
+    //MARK: - Cells -
+    
+    func registerCell() {
+        switch cellTypeOption {
+        case .xibAuto:
+            tableView?.useCellOfType(CellType.self)
+        case .xibManual:
+            guard let identifier = customIdentifier else {
+                assert(false, ".xibManual requires cell `customIdentifier` ")
+                return
+            }
+            tableView.useCellOfType(CellType.self, customIdentifier: identifier)
+        case .classOnly, .storyboard:
+            guard let identifier = customIdentifier else {
+                assert(false, "\(cellTypeOption) requires cell `customIdentifier` ")
+                return
+            }
+            tableView.register(CellType.self, forCellReuseIdentifier: identifier)
+        }
+    }
     
     //MARK: - DequeCell - 
     
@@ -114,6 +124,7 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .classOnly, .storyboard, .xibManual:
             guard let identifier = customIdentifier else {
                 assert(false, "\(cellTypeOption) requires cell `customIdentifier`")
+                return nil
             }
             return tableView.dequeueReusableCell(withIdentifier: identifier) as? CellType
         }
