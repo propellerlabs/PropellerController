@@ -16,7 +16,7 @@ class UITableViewExtentionTests: XCTestCase {
         
         let controller = GeneralTableController<NameCell, String>()
         controller.tableView = tableView
-        controller.dataSource = ["Test data"]
+        controller.setDataSource(["Test data"])
         
         let indexPath = IndexPath(item: 0, section: 0)
         let cell = tableView.dequeueReusableCellWithClass(NameCell.self, forIndexPath: indexPath)

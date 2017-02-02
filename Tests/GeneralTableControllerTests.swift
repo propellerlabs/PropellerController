@@ -26,8 +26,9 @@ class GeneralTableControllerTests: XCTestCase {
     func testControllerDataSourceSet() {
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
-        XCTAssert(controller.dataSource.count == testNames.count)
+        controller.setDataSource(testNames)
+        XCTAssert(controller.dataSource.first != nil)
+        XCTAssert(controller.dataSource.first!.count == testNames.count)
     }
     
     func testLoadNameCellFromNib() {
@@ -42,7 +43,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `cellLoaded`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.cellLoaded = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -57,7 +58,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testCellHeight() {
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.rowHeight = 80
         
         controller.willDisplayCell = { cell, data, iPath in
@@ -71,7 +72,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testSetDynamicRowHeights() {
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.dynamicRowHeights = true
         XCTAssert(table.rowHeight == UITableViewAutomaticDimension, "did not assign dynamic row heights value to tableView")
     }
@@ -80,7 +81,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.didSelectCell = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -96,7 +97,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.didDeselectCell = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -112,7 +113,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.willDisplayCell = { cell, data, iPath in
             XCTAssert(data.first == testNames[iPath.row].first)
             XCTAssert(iPath.row == 2)
@@ -129,7 +130,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         let titleText = "titleTest"
         controller.titleForHeaderInSection = { section in
             XCTAssert(section == 0)
@@ -145,7 +146,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         
         let testHeader = UIView()
         
@@ -163,7 +164,7 @@ class GeneralTableControllerTests: XCTestCase {
         let expectation = self.expectation(description: "should call `didSelectCell`")
         let table = UITableView()
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         let testHeader = UIView()
         controller.headerForSection = { section in
             XCTAssert(section == 0)
@@ -192,7 +193,7 @@ class GeneralTableControllerTests: XCTestCase {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.cellLoaded = { cell, data, iPath in
             XCTAssert(cell.reuseIdentifier == identifier)
             XCTAssert(data.first == testNames[iPath.row].first)
@@ -213,7 +214,7 @@ class GeneralTableControllerTests: XCTestCase {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.cellLoaded = { cell, data, iPath in
             XCTAssert(cell.reuseIdentifier == identifier)
             XCTAssert(data.first == testNames[iPath.row].first)
@@ -236,7 +237,7 @@ class GeneralTableControllerTests: XCTestCase {
         let table = UITableView(frame: frame)
         let controller = TableController.nameSelection(table)
         let scrollToPoint = CGPoint(x:0,y:100)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         controller.viewDidScroll = { scrollView in
             XCTAssert(scrollView === table)
             XCTAssert(scrollToPoint == scrollView.contentOffset)
@@ -251,7 +252,7 @@ class GeneralTableControllerTests: XCTestCase {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         
         //test scroll to bottom position, if contentSize < frame height sould just goto to y = 0
         var expectedBottomY = table.contentSize.height - frame.height
@@ -281,7 +282,7 @@ class GeneralTableControllerTests: XCTestCase {
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         let controller = TableController.nameSelection(table)
-        controller.dataSource = testNames
+        controller.setDataSource(testNames)
         table.contentSize.height = 20000
         
         //test scroll to bottom position, if contentSize < frame height sould just goto to y = 0

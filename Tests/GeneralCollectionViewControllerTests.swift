@@ -20,7 +20,7 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
-        controller.dataSource = ["Item one"]
+        controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
             return CGSize(width: 100, height: 100)
         }
@@ -46,7 +46,7 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
-        controller.dataSource = ["Item one"]
+        controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
             return CGSize(width: 100, height: 100)
         }
@@ -75,7 +75,7 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
-        controller.dataSource = ["Item one"]
+        controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
             return CGSize(width: 100, height: 100)
         }

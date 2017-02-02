@@ -22,7 +22,7 @@ class UICollectionViewExtensionTests: XCTestCase {
         controller.sizeForIndex = { _ in
             return size
         }
-        controller.dataSource = ["Test data"]
+        controller.setDataSource(["Test data"])
         collectionView.reloadData()
         
         let indexPath = IndexPath(item: 0, section: 0)

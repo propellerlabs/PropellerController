@@ -35,7 +35,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
             return
         }
         
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         
         toggleSelection(data: data, cell: cell, indexPath: indexPath)
         
@@ -48,7 +48,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
             return
         }
         
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
 
         toggleSelection(data: data, cell: cell, indexPath: indexPath)
 
@@ -59,7 +59,7 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return UITableViewCell()
         }
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         
         let selected = selectionSource.contains(data)
         cell.setSelected(selected, animated: false)
