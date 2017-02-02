@@ -138,6 +138,10 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource[section].count
+    }
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
     }
     
