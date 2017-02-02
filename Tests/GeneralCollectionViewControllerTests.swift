@@ -67,7 +67,6 @@ class GeneralCollectionViewControllerTests: XCTestCase {
     
     func testDelegateDidSelectItem() {
         let expectation = self.expectation(description: "didSelectCell called")
-        let expectation2 = self.expectation(description: "didSelectIndex called")
         
         let size = CGSize(width: 100, height: 100)
         let frame = CGRect(origin: .zero, size: size)
@@ -82,9 +81,6 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         controller.didSelectCell = { cell, _, _ in
             expectation.fulfill()
         }
-        controller.didSelectIndex = { _ in
-            expectation2.fulfill()
-        }
         
         let indexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
@@ -93,7 +89,6 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
         
         XCTAssertNotNil(controller.didSelectCell)
-        XCTAssertNotNil(controller.didSelectIndex)
         XCTAssertNotNil(controller.sizeForIndex)
         XCTAssert(collectionView.indexPathsForSelectedItems?.count == 1)
     }

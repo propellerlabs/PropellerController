@@ -44,18 +44,24 @@ public class GeneralTableController<CellType: UITableViewCell,
     public func setDataSource(_ dataSource: [DataType]) {
         self.dataSource = [dataSource]
     }
+    
     public func setDataSource(_ dataSource: [[DataType]]) {
         self.dataSource = dataSource
     }
     
     public weak var tableView: UITableView! {
         didSet {
-            tableView?.delegate = self
-            tableView?.dataSource = self
-            registerCell()
-            tableView?.estimatedRowHeight = 44.0
+            setupTableView()
         }
     }
+    
+    func setupTableView() {
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        registerCell()
+        tableView?.estimatedRowHeight = 44.0
+    }
+    
 
     public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
                             customIdentifier: String? = nil) {
@@ -63,6 +69,32 @@ public class GeneralTableController<CellType: UITableViewCell,
         self.cellTypeOption = cellTypeOption
         self.customIdentifier = customIdentifier
     }
+    
+    //MARK: - Callback on Cell Actions -
+    
+    public var willDisplayCell: CallbackType = { _, _, _ in }
+    
+    public var cellLoaded: CallbackType = { _, _, _ in }
+    
+    public var didSelectCell: CallbackType = { _, _, _ in }
+    
+    public var didDeselectCell: CallbackType = { _, _, _ in }
+    
+    public var didSelectIndex: (Int) -> Void = { _ in }
+    
+    //MARK: - ScrollViewDelegate Actions -
+    
+    public var viewDidScroll:(UIScrollView) -> Void = { _ in }
+    
+    //MARK: - header/footer Actions -
+    
+    public var headerForSection: (Int) -> UIView? = { _ in return nil }
+    
+    public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
+    
+    public var willDisplayHeaderView: (UIView) -> Void = { _ in }
+    
+    //MARK: - Cells -
     
     func registerCell() {
         switch cellTypeOption {
@@ -82,30 +114,6 @@ public class GeneralTableController<CellType: UITableViewCell,
             tableView.register(CellType.self, forCellReuseIdentifier: identifier)
         }
     }
-    
-    //MARK: - Callback on Cell Actions -
-    
-    public var willDisplayCell: CallbackType = { _, _, _ in }
-    
-    public var cellLoaded: CallbackType = { _, _, _ in }
-    
-    public var didSelectCell: CallbackType = { _, _, _ in }
-    
-    public var didDeselectCell: CallbackType = { _, _, _ in }
-    
-    public var didSelectIndex: (Int) -> Void = { _ in }
-    
-    //MARK: - ScrollViewDelegate Actions -
-    
-    public var viewDidScroll:(UIScrollView) -> Void = { _ in }
-
-    //MARK: - header/footer Actions -
-    
-    public var headerForSection: (Int) -> UIView? = { _ in return nil }
-    
-    public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
-    
-    public var willDisplayHeaderView: (UIView) -> Void = { _ in }
     
     //MARK: - DequeCell - 
     

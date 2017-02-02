@@ -10,14 +10,13 @@ import UIKit
 
 /// requires Cell to override `func toggle(selected: Bool)`
 
-public final class GeneralSelectableTableController<CellType: UITableViewCell, DataType: Hashable>: GeneralTableController<CellType, DataType> {
+public final class GeneralMultiSelectionTableController<CellType: UITableViewCell, DataType: Hashable>: GeneralTableController<CellType, DataType> {
     
-    var selectionSource = Set<DataType>()
+    public var selectionSource = Set<DataType>()
     
-    public var allowsMultipleSelection = false {
-        didSet {
-            tableView?.allowsMultipleSelection = allowsMultipleSelection
-        }
+    override func setupTableView() {
+        super.setupTableView()
+        tableView.allowsMultipleSelection = true
     }
     
     /// toggle the selected state of the associated cell data in `selectionSource`
@@ -34,24 +33,17 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return
         }
-        
         let data = dataSource[indexPath.section][indexPath.row]
-        
         toggleSelection(data: data, cell: cell, indexPath: indexPath)
-        
         didSelectCell(cell, data, indexPath)
     }
-    
     
     public override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return
         }
-        
         let data = dataSource[indexPath.section][indexPath.row]
-
         toggleSelection(data: data, cell: cell, indexPath: indexPath)
-
         didDeselectCell(cell, data, indexPath)
     }
     
@@ -60,10 +52,8 @@ public final class GeneralSelectableTableController<CellType: UITableViewCell, D
             return UITableViewCell()
         }
         let data = dataSource[indexPath.section][indexPath.row]
-        
         let selected = selectionSource.contains(data)
         cell.setSelected(selected, animated: false)
-        
         cellLoaded(cell, data, indexPath)
         return cell
     }

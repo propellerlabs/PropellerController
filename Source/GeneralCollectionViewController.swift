@@ -32,8 +32,6 @@ final class GeneralCollectionViewController<CellType: UICollectionViewCell, Data
         }
     }
     
-    var didSelectIndex: (Int) -> Void = { _ in }
-    
     var didSelectCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
     
     var willDisplayCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
@@ -47,15 +45,13 @@ final class GeneralCollectionViewController<CellType: UICollectionViewCell, Data
         return .zero
     }
     
-    var numberOfItemsInSection: (Int) -> Int? = { _ in return nil }
-    
     //MARK: - UICollectionViewDataSource, UICollectionViewDelegate -
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfItemsInSection(section) ?? dataSource[section].count
+        return dataSource[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,7 +76,6 @@ final class GeneralCollectionViewController<CellType: UICollectionViewCell, Data
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSelectIndex(indexPath.row)
         let cell = collectionView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)!
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)

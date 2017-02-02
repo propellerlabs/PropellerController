@@ -11,29 +11,22 @@ import XCTest
 
 class GeneralSelectableTableControllerTests: XCTestCase {
     
-    let sampleData = ["Item one", "Item two"]
+    
     
     func testDelegateDidSelectRow() {
         
         let tableView = UITableView(frame: .zero)
-        let tableContoller = GeneralSelectableTableController<NameCell, String>()
-        tableContoller.tableView = tableView
-        tableContoller.setDataSource(sampleData)
-
+        let tableController = TableController.nameMultiSelection(tableView)
         let indexPath = IndexPath(row: 0, section: 0)
-        
         tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-        tableContoller.tableView(tableView, didSelectRowAt: indexPath)
-        
-        XCTAssert(tableContoller.selectionSource.count == 1)
+        tableController.tableView(tableView, didSelectRowAt: indexPath)
+        XCTAssert(tableController.selectionSource.count == 1)
     }
     
     func testDelegateDidDeselectRow() {
         
         let tableView = UITableView(frame: .zero)
-        let tableController = GeneralSelectableTableController<NameCell, String>()
-        tableController.tableView = tableView
-        tableController.setDataSource(sampleData)
+        let tableController = TableController.nameMultiSelection(tableView)
         
         let indexPath = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 1, section: 0)
@@ -54,27 +47,20 @@ class GeneralSelectableTableControllerTests: XCTestCase {
     
     func testDataSourceCellForRowAtIndexPath() {
         let tableView = UITableView(frame: .zero)
-        let tableController = GeneralSelectableTableController<NameCell, String>()
-        tableController.tableView = tableView
-        tableController.setDataSource(sampleData)
+        let tableController = TableController.nameMultiSelection(tableView)
+
         tableController.cellLoaded = { cell, data, indexPath in
             cell.textLabel?.text = data
         }
-        
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = tableController.tableView(tableView, cellForRowAt: indexPath)
-        
         XCTAssertNotNil(cell)
         XCTAssert(cell.textLabel?.text == "Item one")
     }
     
     func testMultipleSelection() {
         let tableView = UITableView(frame: .zero)
-        
-        let tableController = GeneralSelectableTableController<NameCell, String>()
-        tableController.tableView = tableView
-        tableController.allowsMultipleSelection = true
-        tableController.setDataSource(sampleData)
+        let tableController = TableController.nameMultiSelection(tableView)
  
         let indexPath = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 1, section: 0)
