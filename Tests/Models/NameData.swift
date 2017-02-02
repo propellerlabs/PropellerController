@@ -19,9 +19,23 @@ struct NameData {
 }
 
 let testNames = [
+    NameData(first: "Bob"),
+    NameData(first: "Rob"),
+    NameData(first: "Cob"),
+    NameData(first: "Dob"),
+    NameData(first: "Knob")
+]
+
+let testSectionedNames = [
+    [
         NameData(first: "Bob"),
+        NameData(first: "Ross"),
+        NameData(first: "Rob")
+    ],
+    [
         NameData(first: "Rob"),
         NameData(first: "Cob"),
         NameData(first: "Dob"),
         NameData(first: "Knob")
+    ]
 ]

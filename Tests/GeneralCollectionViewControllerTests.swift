@@ -97,4 +97,36 @@ class GeneralCollectionViewControllerTests: XCTestCase {
         XCTAssertNotNil(controller.sizeForIndex)
         XCTAssert(collectionView.indexPathsForSelectedItems?.count == 1)
     }
+    
+    func testNumberOfSections() {
+        let size = CGSize(width: 100, height: 100)
+        let frame = CGRect(origin: .zero, size: size)
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        let controller = GeneralCollectionViewController<TestCollectionViewCell, NameData>()
+        controller.collectionView = collectionView
+        controller.sizeForIndex = { _ in
+            return CGSize(width: 100, height: 100)
+        }
+        controller.setDataSource(testSectionedNames)
+
+        let numberOfSections = collectionView.numberOfSections
+        XCTAssert(numberOfSections == testSectionedNames.count)
+    }
+    
+    func testNumberOfRows() {
+        let size = CGSize(width: 100, height: 100)
+        let frame = CGRect(origin: .zero, size: size)
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        let controller = GeneralCollectionViewController<TestCollectionViewCell, NameData>()
+        controller.collectionView = collectionView
+        controller.sizeForIndex = { _ in
+            return CGSize(width: 100, height: 100)
+        }
+        controller.setDataSource(testSectionedNames)
+        
+        let numberOfRowsInFirstSection = collectionView.numberOfItems(inSection: 0)
+        XCTAssert(numberOfRowsInFirstSection == testSectionedNames[0].count)
+    }
 }

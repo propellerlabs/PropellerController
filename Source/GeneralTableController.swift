@@ -71,11 +71,13 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .xibManual:
             guard let identifier = customIdentifier else {
                 assert(false, ".xibManual requires cell `customIdentifier` ")
+                return
             }
             tableView.useCellOfType(CellType.self, customIdentifier: identifier)
         case .classOnly, .storyboard:
             guard let identifier = customIdentifier else {
                 assert(false, "\(cellTypeOption) requires cell `customIdentifier` ")
+                return
             }
             tableView.register(CellType.self, forCellReuseIdentifier: identifier)
         }
@@ -114,6 +116,7 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .classOnly, .storyboard, .xibManual:
             guard let identifier = customIdentifier else {
                 assert(false, "\(cellTypeOption) requires cell `customIdentifier`")
+                return nil
             }
             return tableView.dequeueReusableCell(withIdentifier: identifier) as? CellType
         }
@@ -135,6 +138,10 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource[section].count
+    }
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
     }
     
