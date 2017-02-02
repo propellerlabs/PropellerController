@@ -116,7 +116,7 @@ public class GeneralTableController<CellType: UITableViewCell,
         case .classOnly, .storyboard, .xibManual:
             guard let identifier = customIdentifier else {
                 assert(false, "\(cellTypeOption) requires cell `customIdentifier`")
-                return
+                return nil
             }
             return tableView.dequeueReusableCell(withIdentifier: identifier) as? CellType
         }
