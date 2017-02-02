@@ -45,15 +45,13 @@ final class GeneralCollectionViewController<CellType: UICollectionViewCell, Data
         return .zero
     }
     
-    var numberOfItemsInSection: (Int) -> Int? = { _ in return nil }
-    
     //MARK: - UICollectionViewDataSource, UICollectionViewDelegate -
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfItemsInSection(section) ?? dataSource[section].count
+        return dataSource[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
