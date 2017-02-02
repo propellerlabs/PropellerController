@@ -28,7 +28,6 @@
 		E3F514111E41023D002CDA10 /* NameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F31E4100D5002CDA10 /* NameData.swift */; };
 		E3F514121E41023D002CDA10 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F41E4100D5002CDA10 /* TableController.swift */; };
 		E3F514131E410242002CDA10 /* GeneralTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F01E4100D5002CDA10 /* GeneralTableControllerTests.swift */; };
-		E3F514141E410242002CDA10 /* PropellerControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */; };
 		E3F514151E410242002CDA10 /* UICollectionView+ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */; };
 		E3F514171E4102F9002CDA10 /* StubbedGeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */; };
 /* End PBXBuildFile section */
@@ -68,7 +67,6 @@
 		E3F513F11E4100D5002CDA10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3F513F31E4100D5002CDA10 /* NameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameData.swift; sourceTree = "<group>"; };
 		E3F513F41E4100D5002CDA10 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
-		E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropellerControllerTests.swift; sourceTree = "<group>"; };
 		E3F513F71E4100D5002CDA10 /* StubbedGeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubbedGeneralTableController.swift; sourceTree = "<group>"; };
 		E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ExtensionTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +141,6 @@
 				E309D2701E4119330052ACD1 /* GeneralCollectionViewControllerTests.swift */,
 				E309D26E1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift */,
 				E3F513F01E4100D5002CDA10 /* GeneralTableControllerTests.swift */,
-				E3F513F51E4100D5002CDA10 /* PropellerControllerTests.swift */,
 				E3F513F91E4100D5002CDA10 /* UICollectionView+ExtensionTests.swift */,
 				E309D2671E4107330052ACD1 /* UITableViewExtentionTests.swift */,
 				E3F513F11E4100D5002CDA10 /* Info.plist */,
@@ -318,7 +315,6 @@
 				E3F514131E410242002CDA10 /* GeneralTableControllerTests.swift in Sources */,
 				E3F5140D1E410237002CDA10 /* NameCell.swift in Sources */,
 				E309D26F1E410C8B0052ACD1 /* GeneralSelectableTableControllerTests.swift in Sources */,
-				E3F514141E410242002CDA10 /* PropellerControllerTests.swift in Sources */,
 				E309D2681E4107330052ACD1 /* UITableViewExtentionTests.swift in Sources */,
 				5200B0E91E4142D500A328DB /* NameAgainCell.swift in Sources */,
 			);

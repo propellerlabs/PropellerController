@@ -37,8 +37,15 @@ public class GeneralTableController<CellType: UITableViewCell,
         }
     }
     
-    public var dataSource = [DataType]() {
+    var dataSource = [[DataType]]() {
         didSet { tableView?.reloadData() }
+    }
+    
+    public func setDataSource(_ dataSource: [DataType]) {
+        self.dataSource = [dataSource]
+    }
+    public func setDataSource(_ dataSource: [[DataType]]) {
+        self.dataSource = dataSource
     }
     
     public weak var tableView: UITableView! {
@@ -135,7 +142,7 @@ public class GeneralTableController<CellType: UITableViewCell,
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return UITableViewCell()
         }
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         cellLoaded(cell, data, indexPath)
         return cell
     }
@@ -143,19 +150,19 @@ public class GeneralTableController<CellType: UITableViewCell,
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectIndex(indexPath.row)
         let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         didDeselectCell(cell, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? CellType else { return }
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.section][indexPath.row]
         willDisplayCell(cell, data, indexPath)
     }
     

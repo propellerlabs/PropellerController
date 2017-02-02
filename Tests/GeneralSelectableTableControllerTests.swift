@@ -11,12 +11,14 @@ import XCTest
 
 class GeneralSelectableTableControllerTests: XCTestCase {
     
+    let sampleData = ["Item one", "Item two"]
+    
     func testDelegateDidSelectRow() {
         
         let tableView = UITableView(frame: .zero)
         let tableContoller = GeneralSelectableTableController<NameCell, String>()
         tableContoller.tableView = tableView
-        tableContoller.dataSource = ["Item one", "Item two"]
+        tableContoller.setDataSource(sampleData)
 
         let indexPath = IndexPath(row: 0, section: 0)
         
@@ -31,7 +33,7 @@ class GeneralSelectableTableControllerTests: XCTestCase {
         let tableView = UITableView(frame: .zero)
         let tableController = GeneralSelectableTableController<NameCell, String>()
         tableController.tableView = tableView
-        tableController.dataSource = ["Item one", "Item two"]
+        tableController.setDataSource(sampleData)
         
         let indexPath = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 1, section: 0)
@@ -54,7 +56,7 @@ class GeneralSelectableTableControllerTests: XCTestCase {
         let tableView = UITableView(frame: .zero)
         let tableController = GeneralSelectableTableController<NameCell, String>()
         tableController.tableView = tableView
-        tableController.dataSource = ["Item one", "Item two"]
+        tableController.setDataSource(sampleData)
         tableController.cellLoaded = { cell, data, indexPath in
             cell.textLabel?.text = data
         }
@@ -72,7 +74,7 @@ class GeneralSelectableTableControllerTests: XCTestCase {
         let tableController = GeneralSelectableTableController<NameCell, String>()
         tableController.tableView = tableView
         tableController.allowsMultipleSelection = true
-        tableController.dataSource = ["Item one", "Item two"]
+        tableController.setDataSource(sampleData)
  
         let indexPath = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 1, section: 0)
