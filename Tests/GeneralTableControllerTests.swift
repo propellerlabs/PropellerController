@@ -298,4 +298,22 @@ class GeneralTableControllerTests: XCTestCase {
         controller.scrollToBottom()
         waitForExpectations(timeout: 2.0, handler: nil)
     }
+    
+    func testNumberOfSections() {
+        let table = UITableView()
+        let controller = TableController.nameSelection(table)
+        controller.setDataSource(testSectionedNames)
+        
+        let numberOfSections = table.numberOfSections
+        XCTAssert(numberOfSections == testSectionedNames.count)
+    }
+    
+    func testNumberOfRows() {
+        let table = UITableView()
+        let controller = TableController.nameSelection(table)
+        controller.setDataSource(testSectionedNames)
+        
+        let numberOfRowsInFirstSection = table.numberOfRows(inSection: 0)
+        XCTAssert(numberOfRowsInFirstSection == testSectionedNames[0].count)
+    }
 }
