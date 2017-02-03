@@ -32,7 +32,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let cell = controller.collectionView(collectionView, cellForItemAt: indexPath)
         
         waitForExpectations(timeout: 1, handler: nil)
-        
+
         XCTAssertNotNil(controller.cellLoaded)
         XCTAssertNotNil(cell)
     }
