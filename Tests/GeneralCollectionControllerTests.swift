@@ -9,7 +9,7 @@
 import XCTest
 @testable import PropellerController
 
-class GeneralCollectionViewControllerTests: XCTestCase {
+class GeneralCollectionControllerTests: XCTestCase {
     
     func testDataSourceCellForItem() {
         let expectation = self.expectation(description: "cellLoaded called")

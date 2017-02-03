@@ -9,9 +9,7 @@
 import XCTest
 @testable import PropellerController
 
-class GeneralSelectableTableControllerTests: XCTestCase {
-    
-    
+class GeneralMultiSelectionTableControllerTests: XCTestCase {
     
     func testDelegateDidSelectRow() {
         
