@@ -58,7 +58,7 @@ final class PeopleViewController: UIViewController {
     lazy var tableController: GeneralTableController<NameCell, NameData> = {
         let controller = TableController.nameSelection(self.tableView)
 
-        //ADD VC LINKED CONFIFGURATION!
+        //add VC related configurations that can't be static
         controller.setDataSource(self.dataSource)
         tableController.didSelectCell = { [weak self] _, _, path in 
             self?.selected(indexPath: path)
