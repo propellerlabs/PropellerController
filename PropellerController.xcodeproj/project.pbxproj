@@ -15,7 +15,7 @@
 		E309D26D1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E309D26C1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib */; };
 		E309D26F1E410C8B0052ACD1 /* GeneralMultiSelectionTableControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D26E1E410C8B0052ACD1 /* GeneralMultiSelectionTableControllerTests.swift */; };
 		E309D2711E4119330052ACD1 /* GeneralCollectionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D2701E4119330052ACD1 /* GeneralCollectionControllerTests.swift */; };
-		E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */; };
+		E3F513FA1E4100D5002CDA10 /* GeneralCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E31E4100D5002CDA10 /* GeneralCollectionController.swift */; };
 		E3F513FB1E4100D5002CDA10 /* GeneralMultiSelectionTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E41E4100D5002CDA10 /* GeneralMultiSelectionTableController.swift */; };
 		E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */; };
 		E3F513FE1E4100D5002CDA10 /* PropellerController.h in Headers */ = {isa = PBXBuildFile; fileRef = E3F513E71E4100D5002CDA10 /* PropellerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,7 +52,7 @@
 		E309D26C1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
 		E309D26E1E410C8B0052ACD1 /* GeneralMultiSelectionTableControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralMultiSelectionTableControllerTests.swift; sourceTree = "<group>"; };
 		E309D2701E4119330052ACD1 /* GeneralCollectionControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionControllerTests.swift; sourceTree = "<group>"; };
-		E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionViewController.swift; sourceTree = "<group>"; };
+		E3F513E31E4100D5002CDA10 /* GeneralCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralCollectionController.swift; sourceTree = "<group>"; };
 		E3F513E41E4100D5002CDA10 /* GeneralMultiSelectionTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralMultiSelectionTableController.swift; sourceTree = "<group>"; };
 		E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralTableController.swift; sourceTree = "<group>"; };
 		E3F513E61E4100D5002CDA10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		E3F513E21E4100D5002CDA10 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				E3F513E31E4100D5002CDA10 /* GeneralCollectionViewController.swift */,
+				E3F513E31E4100D5002CDA10 /* GeneralCollectionController.swift */,
 				E3F513E41E4100D5002CDA10 /* GeneralMultiSelectionTableController.swift */,
 				E3F513E51E4100D5002CDA10 /* GeneralTableController.swift */,
 				E3F513E81E4100D5002CDA10 /* UICollectionView+Extension.swift */,
@@ -295,7 +295,7 @@
 			files = (
 				E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */,
 				E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */,
-				E3F513FA1E4100D5002CDA10 /* GeneralCollectionViewController.swift in Sources */,
+				E3F513FA1E4100D5002CDA10 /* GeneralCollectionController.swift in Sources */,
 				E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */,
 				E3F513FC1E4100D5002CDA10 /* GeneralTableController.swift in Sources */,
 				E3F513FB1E4100D5002CDA10 /* GeneralMultiSelectionTableController.swift in Sources */,

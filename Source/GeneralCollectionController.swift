@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GeneralCollectionViewController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+final class GeneralCollectionController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var selectedIndex = -1
     

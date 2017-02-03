@@ -1,5 +1,5 @@
 //
-//  GeneralCollectionViewControllerTests.swift
+//  GeneralCollectionControllerTests.swift
 //  PropellerController
 //
 //  Created by Roy McKenzie on 1/31/17.
@@ -18,7 +18,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let frame = CGRect(origin: .zero, size: size)
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
@@ -44,7 +44,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let frame = CGRect(origin: .zero, size: size)
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
@@ -72,7 +72,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let frame = CGRect(origin: .zero, size: size)
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
         controller.sizeForIndex = { _ in
@@ -98,7 +98,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let frame = CGRect(origin: .zero, size: size)
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, NameData>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, NameData>()
         controller.collectionView = collectionView
         controller.sizeForIndex = { _ in
             return CGSize(width: 100, height: 100)
@@ -114,7 +114,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let frame = CGRect(origin: .zero, size: size)
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, NameData>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, NameData>()
         controller.collectionView = collectionView
         controller.sizeForIndex = { _ in
             return CGSize(width: 100, height: 100)

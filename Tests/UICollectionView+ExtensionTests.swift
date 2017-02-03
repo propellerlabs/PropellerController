@@ -17,7 +17,7 @@ class UICollectionViewExtensionTests: XCTestCase {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         
-        let controller = GeneralCollectionViewController<TestCollectionViewCell, String>()
+        let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.sizeForIndex = { _ in
             return size
