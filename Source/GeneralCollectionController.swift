@@ -8,7 +8,17 @@
 
 import UIKit
 
-final class GeneralCollectionController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+/// Handles common `UICollectionViewDelegate` and `UICollectionViewDataSource` methods for a `UICollectionView`
+///
+/// ```swift
+///     let controller = GeneralCollectionController<MyCustomCell, String>()
+///     controller.collectionView = collectionView
+///     controller.setDataSource(["Item One", "Item Two"])
+///     controller.willDisplayCell = { cell, data, _ in
+///         cell.textLabel.text = data
+///     }
+/// ```
+public final class GeneralCollectionController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var selectedIndex = -1
     
@@ -16,15 +26,8 @@ final class GeneralCollectionController<CellType: UICollectionViewCell, DataType
         didSet { collectionView?.reloadData() }
     }
     
-    public func setDataSource(_ dataSource: [DataType]) {
-        self.dataSource = [dataSource]
-    }
-    
-    public func setDataSource(_ dataSource: [[DataType]]) {
-        self.dataSource = dataSource
-    }
-    
-    weak var collectionView: UICollectionView! {
+    /// The `UICollectionView` to set the `dataSource` and `delegate` on
+    public weak var collectionView: UICollectionView! {
         didSet {
             collectionView?.delegate = self
             collectionView?.dataSource = self
@@ -32,29 +35,55 @@ final class GeneralCollectionController<CellType: UICollectionViewCell, DataType
         }
     }
     
-    var didSelectCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    // MARK: - Setting DataSource
     
-    var willDisplayCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    /// Set the `dataSouce` with an array of `DataType`
+    public func setDataSource(_ dataSource: [DataType]) {
+        self.dataSource = [dataSource]
+    }
     
-    var cellLoaded: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    /// Set the `dataSource` with an array of `[DataType]`
+    /// for use in supporting sectioned `UICollectionView`s
+    public func setDataSource(_ dataSource: [[DataType]]) {
+        self.dataSource = dataSource
+    }
     
-    var headerForSection: (Int) -> UIView? = { _ in return nil }
+    // MARK: - Callbacks
     
-    var sizeForIndex: (Int) -> CGSize = { _ in
+    /// Callback that takes `CellType`, `DataType`, `IndexPath` and executes a closure
+    /// when a cell is selected
+    public var didSelectCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    
+    /// Callback that takes `CellType`, `DataType`, `IndexPath` and executes a closure
+    /// when a cell is will be displayed
+    public var willDisplayCell: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    
+    /// Callback that takes `CellType`, `DataType`, `IndexPath` and executes a closure
+    /// when a cell is loaded
+    public var cellLoaded: (CellType, DataType, IndexPath) -> Void = { _, _, _ in }
+    
+    /// Callback that takes a section number (`Int`) and executes a closure
+    /// that returns a `UIView` for a section's header
+    public var headerForSection: (Int) -> UIView? = { _ in return nil }
+    
+    /// Callback that takes an `IndexPath` and executes a closure
+    /// that returns a `CGSize` for the cell at that `IndexPath`
+    public var sizeForIndexPath: (IndexPath) -> CGSize = { _ in
         assert(false, "`GeneralCollectionController` requires setting property `sizeForIndex`")
         return .zero
     }
     
-    //MARK: - UICollectionViewDataSource, UICollectionViewDelegate -
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return dataSource.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource[section].count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath) else {
             return UICollectionViewCell()
         }
@@ -64,10 +93,10 @@ final class GeneralCollectionController<CellType: UICollectionViewCell, DataType
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return sizeForIndex(indexPath.row)
+        return sizeForIndexPath(indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let displayCell = cell as? CellType else {
             return
         }
@@ -75,7 +104,7 @@ final class GeneralCollectionController<CellType: UICollectionViewCell, DataType
         willDisplayCell(displayCell, data, indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)!
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
