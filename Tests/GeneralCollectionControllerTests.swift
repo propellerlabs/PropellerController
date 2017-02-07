@@ -21,7 +21,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return CGSize(width: 100, height: 100)
         }
         controller.cellLoaded = { _ in
@@ -46,7 +46,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return CGSize(width: 100, height: 100)
         }
         controller.willDisplayCell = { cell, _, _ in
@@ -74,7 +74,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
         controller.setDataSource(["Item one"])
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return CGSize(width: 100, height: 100)
         }
         controller.didSelectCell = { cell, _, _ in
@@ -88,7 +88,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         waitForExpectations(timeout: 1, handler: nil)
         
         XCTAssertNotNil(controller.didSelectCell)
-        XCTAssertNotNil(controller.sizeForIndex)
+        XCTAssertNotNil(controller.sizeForIndexPath)
         XCTAssert(collectionView.indexPathsForSelectedItems?.count == 1)
     }
     
@@ -99,7 +99,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         let controller = GeneralCollectionController<TestCollectionViewCell, NameData>()
         controller.collectionView = collectionView
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return CGSize(width: 100, height: 100)
         }
         controller.setDataSource(testSectionedNames)
@@ -115,7 +115,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         let controller = GeneralCollectionController<TestCollectionViewCell, NameData>()
         controller.collectionView = collectionView
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return CGSize(width: 100, height: 100)
         }
         controller.setDataSource(testSectionedNames)

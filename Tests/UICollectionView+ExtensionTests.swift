@@ -19,7 +19,7 @@ class UICollectionViewExtensionTests: XCTestCase {
         
         let controller = GeneralCollectionController<TestCollectionViewCell, String>()
         controller.collectionView = collectionView
-        controller.sizeForIndex = { _ in
+        controller.sizeForIndexPath = { _ in
             return size
         }
         controller.setDataSource(["Test data"])
