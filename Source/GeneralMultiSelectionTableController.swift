@@ -9,7 +9,7 @@
 import UIKit
 
 /// Subclass of `GeneralTableController` that allows you you keep track of selected dataSource entry. Requires `DataType` to be `Hashable`.
-/// Also you can use `toggleSelection` function to manually invert a data value's selection state.
+/// Also, you can use `toggleSelection` function to manually invert a data value's selection state.
 public final class GeneralMultiSelectionTableController<CellType: UITableViewCell, DataType: Hashable>: GeneralTableController<CellType, DataType> {
     
     /// current selected items

@@ -155,9 +155,9 @@ public class GeneralTableController<CellType: UITableViewCell,
      Callback function that returns the title string for a particular section
      
      - Closure parameters:
-     - (Int) section: section number to get view for
+        - (Int) section: section number to get view for
      
-     - Returns: returns title:`String` for section passed in via parameter.
+     - Returns: title `String` for section passed in via parameter.
      */
     public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
     
