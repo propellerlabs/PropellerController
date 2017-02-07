@@ -12,6 +12,7 @@ import UIKit
 
 public final class GeneralMultiSelectionTableController<CellType: UITableViewCell, DataType: Hashable>: GeneralTableController<CellType, DataType> {
     
+    /// current selected items
     public var selectionSource = Set<DataType>()
     
     override func setupTableView() {
@@ -20,7 +21,7 @@ public final class GeneralMultiSelectionTableController<CellType: UITableViewCel
     }
     
     /// toggle the selected state of the associated cell data in `selectionSource`
-    func toggleSelection(data: DataType, cell: CellType, indexPath: IndexPath) {
+    func toggleSelection(data: DataType) {
         if selectionSource.contains(data) {
             selectionSource.remove(data)
         } else {
@@ -33,7 +34,7 @@ public final class GeneralMultiSelectionTableController<CellType: UITableViewCel
             return
         }
         let data = dataSource[indexPath.section][indexPath.row]
-        toggleSelection(data: data, cell: cell, indexPath: indexPath)
+        toggleSelection(data: data)
         didSelectCell(cell, data, indexPath)
     }
     
@@ -42,7 +43,7 @@ public final class GeneralMultiSelectionTableController<CellType: UITableViewCel
             return
         }
         let data = dataSource[indexPath.section][indexPath.row]
-        toggleSelection(data: data, cell: cell, indexPath: indexPath)
+        toggleSelection(data: data)
         didDeselectCell(cell, data, indexPath)
     }
     
