@@ -31,8 +31,7 @@ class GeneralCollectionControllerTests: XCTestCase {
         let indexPath = IndexPath(item: 0, section: 0)
         let cell = controller.collectionView(collectionView, cellForItemAt: indexPath)
         
-        waitForExpectations(timeout: 1, handler: nil)
-
+        waitForExpectations(timeout: 1, handler: nil)   
         XCTAssertNotNil(controller.cellLoaded)
         XCTAssertNotNil(cell)
     }
