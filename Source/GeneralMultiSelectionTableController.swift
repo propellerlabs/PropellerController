@@ -29,7 +29,6 @@ public final class GeneralMultiSelectionTableController<CellType: UITableViewCel
     }
     
     public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectIndex(indexPath.row)
         guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
             return
         }
