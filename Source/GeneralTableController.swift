@@ -8,34 +8,61 @@
 
 import UIKit
 
+/// Option enum to determine what time of cell registering and dequeueing to use
 public enum ControllerCellTypeOption {
+    /// UITableView cell subclassed with no xib or storyboard, `customIdentifier` 
+    /// required in initializer
     case classOnly
+    /// UITableView cell from storyboard, `customIdentifier` required in `GeneralTableController` 
+    /// initializer
     case storyboard
+    /// UITableView cell subclassed with xib file that has matching names across class name, 
+    /// xib file name, and reuseIdentifier.
     case xibAuto
+    /// UITableView cell subclassed with xib, where xib and class have matching names, 
+    /// but the identifier is different and is required in `GeneralTableController` initizier.
     case xibManual
 }
 
+/// Generic TableView Controller requiring Cell and Data associated types to be specified.
+/// Define class like so: `GeneralTableController<SomeCellType, SomeDataType>`.
+/// Using as below:
+///
+/// ```swift
+/// static var nameSelection: (UITableView) -> GeneralTableController<NameCell, NameData> = { table in
+///    let controller = GeneralTableController<NameCell, NameData>()
+///    controller.tableView = table
+///
+///    controller.willDisplayCell = { cell, data, iPath in
+///        cell.name = data.first
+///        cell.image.asyncSetImage(data.imagePath)
+///        cell.location = "row:" + iPath.row
+///    }
+///    return controller
+/// }
+/// ```
 public class GeneralTableController<CellType: UITableViewCell,
                             DataType>: NSObject, UITableViewDataSource, UITableViewDelegate {
 
+    /// Typealias for common tableView callback closure
     public typealias CallbackType = (CellType, DataType, IndexPath) -> Void
     
-    /// row height for each cell
+    /// Row height for each cell
     public var rowHeight: CGFloat = 44
     
-    /// height for header view
+    /// Height for header view
     public var headerHeight: CGFloat = 0
     
-    /// saved index for keeping track of a position or value related to the contents
+    /// Saved index for keeping track of a position or value related to the contents
     public var flaggedIndex: Int = -1
     
-    /// saved boolean state for table
+    /// Saved boolean state for table
     public var flaggedState: Bool = false
     
     var cellTypeOption: ControllerCellTypeOption = .xibAuto
     var customIdentifier: String?
     
-    /// flag to indicate whether to use dynamic row height calculations
+    /// Flag to indicate whether to use dynamic row height calculations
     public var dynamicRowHeights = false {
         willSet {
             if newValue == true {
@@ -123,9 +150,24 @@ public class GeneralTableController<CellType: UITableViewCell,
      - Returns: returns `UIView` for section passed in via parameter.
     */
     public var headerForSection: (Int) -> UIView? = { _ in return nil }
-    
+
+    /**
+     Callback function that returns the title string for a particular section
+     
+     - Closure parameters:
+        - (Int) section: section number to get view for
+     
+     - Returns: title `String` for section passed in via parameter.
+     */
     public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
     
+    /**
+     Callback function that gives you header view for configurations right before it is displayed
+     
+     - Closure parameters:
+     - (UIView) headerView: header view that will be displayed
+
+     */
     public var willDisplayHeaderView: (UIView) -> Void = { _ in }
     
     //MARK: - Cells -
@@ -226,6 +268,8 @@ public class GeneralTableController<CellType: UITableViewCell,
         willDisplayHeaderView(view)
     }
     
+    /// Scrolls tableView to last item in table.  If the height of your table is greater than the contentSize
+    /// you simple goto top of table (y = 0 position).
     public func scrollToBottom() {
         tableView.layoutIfNeeded()
         let target = tableView.contentSize.height - tableView.frame.height

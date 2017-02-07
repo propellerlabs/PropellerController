@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PropellerController  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="PropellerController  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">PropellerController Docs</a> (65% documented)</p>
+        <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fswift_output%2Fdocsets%2FPropellerController%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">PropellerController Reference</a>
+        <img id="carat" src="img/carat.png" />
+        PropellerController  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GeneralCollectionController.html">GeneralCollectionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeneralMultiSelectionTableController.html">GeneralMultiSelectionTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeneralTableController.html">GeneralTableController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><img src="https://api.travis-ci.org/propellerlabs/PropellerController.svg?branch=master" alt="Travis">
+<img src="https://img.shields.io/badge/platform-ios-lightgrey.svg" alt="Platform">
+<img src="https://img.shields.io/badge/language-swift-orange.svg" alt="Swift">
+<img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage">
+<img src="https://img.shields.io/badge/license-MIT-000000.svg" alt="MIT License"></p>
+<a href='#propeller-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='propeller-controller'>Propeller Controller</h1>
+
+<p>The goal of this framework is to allow you to move as much of your table/collection controller content off into a static var elsewhere, to remove clutter, reduce state, and increase code clairity. Read the full documentation <a href="https://propellerlabs.github.io/PropellerController/">Swift</a> generated using <a href="https://github.com/realm/jazzy">Jazzy</a>.</p>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+<pre class="highlight plaintext"><code>github "propellerlabs/PropellerController"
+</code></pre>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+
+<p>Cocoapods will come soon, faster if there is a demand for it.</p>
+<a href='#swift-package-manager' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='swift-package-manager'>Swift Package Manager</h3>
+
+<p>Unfortunately because of this library&rsquo;s dependency on <code>UIKit</code> it is currently impossible to support SPM.</p>
+<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
+<a href='#1-create-a-static-var-somewhere-to-configure-your-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='1-create-a-static-var-somewhere-to-configure-your-controller'>1. Create a static var somewhere to configure your controller</h3>
+<pre class="highlight plaintext"><code>struct TableController {
+
+    static var nameSelection: (UITableView) -&gt; GeneralTableController&lt;NameCell, NameData&gt; = { table in
+        let controller = GeneralTableController&lt;NameCell, NameData&gt;()
+        controller.tableView = table
+
+        controller.willDisplayCell = { cell, data, iPath in
+            cell.name = data.first
+            cell.image.asyncSetImage(data.imagePath)
+            cell.location = "row:" + iPath.row
+        }
+
+        return controller
+    }
+</code></pre>
+<a href='#2-define-it-in-your-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='2-define-it-in-your-view-controller'>2. Define it in your view controller!</h3>
+<pre class="highlight plaintext"><code>final class PeopleViewController: UIViewController {
+    @IBOutlet tableView: UITableView!
+    var dataSource: [NameData]()
+
+    lazy var tableController: GeneralTableController&lt;NameCell, NameData&gt; = {
+        let controller = TableController.nameSelection(self.tableView)
+
+        //add VC related configurations that can't be static
+        controller.setDataSource(self.dataSource)
+        tableController.didSelectCell = { [weak self] _, _, path in 
+            self?.selected(indexPath: path)
+        }
+    }()
+
+    func selected(indexPath: IndexPath) {
+        print("row \(indexPath.row) was selected!"
+    }
+}
+</code></pre>
+<a href='#3-link-to-view-controller-methods-or-parameters-where-necessary' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='3-link-to-view-controller-methods-or-parameters-where-necessary'>3. Link to view controller methods or parameters where necessary</h3>
+
+<p>Define VC specific <code>didSelectCell</code> function
+<code>Swift
+tableController.didSelectCell = { [weak self] _, _, path in 
+    self?.selected(indexPath: path)
+}
+</code>
+Set the controller data source with <code>setDataSource(dataSource)</code> which takes in an <code>Array&lt;DataType&gt;</code> or <code>Array&lt;Array&lt;DataType&gt;&gt;</code>.</p>
+<pre class="highlight plaintext"><code>var sectionedDataSource: [[DataType]]
+controller.setDataSource(sectionedDataSource)
+
+var dataSource = [DataType]
+controller.setDataSource(dataSource)
+</code></pre>
+
+<p>For <strong>UICollectionView</strong> we have you covered, just use <code>GeneralCollectionController</code> instead.</p>
+<a href='#4-want-to-handle-multiple-selections' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='4-want-to-handle-multiple-selections'>4. Want to handle multiple selections?</h3>
+
+<p>We got you covered with <strong>GeneralMultiSelectionTableController</strong></p>
+
+<ul>
+<li><p>We configure it the same way:
+&ldquo;`Swift
+struct TableController {</p>
+
+<p>static let sampleData = [<q>Item one</q>, <q>Item two</q>]</p>
+
+<p>&hellip;.</p>
+
+<p>static var nameMultiSelection: (UITableView) -&gt; GeneralMultiSelectionTableController<NameCell, String> = { table in
+    let controller = GeneralMultiSelectionTableController<NameCell, String>()
+    controller.tableView = table
+    controller.setDataSource(sampleData)
+    return controller
+}
+&rdquo;`</p></li>
+<li><p>Except now we can get a <code>Set</code> of all of the selected <code>Hashable</code> DataType for selected cells:
+&ldquo;`Swift
+let seletedNames = TableNameController.selectionSource</p>
+
+<p>for name in selectedNames {
+    print(<q>\(name) was selected!</q>)
+}
+&rdquo;`</p></li>
+</ul>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

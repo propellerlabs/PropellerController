@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GeneralTableController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/GeneralTableController" class="dashAnchor"></a>
+    <a title="GeneralTableController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PropellerController Docs</a> (65% documented)</p>
+        <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fswift_output%2Fdocsets%2FPropellerController%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PropellerController Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GeneralTableController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralCollectionController.html">GeneralCollectionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralMultiSelectionTableController.html">GeneralMultiSelectionTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralTableController.html">GeneralTableController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GeneralTableController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Generic TableView Controller requiring Cell and Data associated types to be specified.
+Define class like so: <code>GeneralTableController&lt;SomeCellType, SomeDataType&gt;</code>.
+Using as below:</p>
+
+<pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nameSelection</span><span class="p">:</span> <span class="p">(</span><span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">table</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span><span class="p">()</span>
+   <span class="n">controller</span><span class="o">.</span><span class="n">tableView</span> <span class="o">=</span> <span class="n">table</span>
+
+   <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">iPath</span> <span class="k">in</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">first</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="nf">asyncSetImage</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">imagePath</span><span class="p">)</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s">"row:"</span> <span class="o">+</span> <span class="n">iPath</span><span class="o">.</span><span class="n">row</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">controller</span>
+<span class="p">}</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Property/rowHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat">rowHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Row height for each cell</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rowHeight</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">44</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L51">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C19PropellerController22GeneralTableController12CallbackType"></a>
+                    <a name="//apple_ref/swift/Alias/CallbackType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C19PropellerController22GeneralTableController12CallbackType">CallbackType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Typealias for common tableView callback closure</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">CallbackType</span> <span class="o">=</span> <span class="p">(</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">,</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L48">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController12headerHeightV12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Property/headerHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController12headerHeightV12CoreGraphics7CGFloat">headerHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Height for header view</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headerHeight</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L54">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController12flaggedIndexSi"></a>
+                    <a name="//apple_ref/swift/Property/flaggedIndex" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController12flaggedIndexSi">flaggedIndex</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saved index for keeping track of a position or value related to the contents</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">flaggedIndex</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L57">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController12flaggedStateSb"></a>
+                    <a name="//apple_ref/swift/Property/flaggedState" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController12flaggedStateSb">flaggedState</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Saved boolean state for table</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">flaggedState</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L60">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController17dynamicRowHeightsSb"></a>
+                    <a name="//apple_ref/swift/Property/dynamicRowHeights" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController17dynamicRowHeightsSb">dynamicRowHeights</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flag to indicate whether to use dynamic row height calculations</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">dynamicRowHeights</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L66-L72">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController13setDataSourceFGSaq__T_"></a>
+                    <a name="//apple_ref/swift/Method/setDataSource(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController13setDataSourceFGSaq__T_">setDataSource(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>set dataSource for tableView from array type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDataSource</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="p">[</span><span class="kt">DataType</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L80-L82">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController13setDataSourceFGSaGSaq___T_"></a>
+                    <a name="//apple_ref/swift/Method/setDataSource(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController13setDataSourceFGSaGSaq___T_">setDataSource(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>set dataSource for tableView from nested array type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDataSource</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="p">[[</span><span class="kt">DataType</span><span class="p">]])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L85-L87">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController9tableViewXwGSQCSo11UITableView_"></a>
+                    <a name="//apple_ref/swift/Property/tableView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController9tableViewXwGSQCSo11UITableView_">tableView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>tableView to be controlled, setup on tableView is called automatically for delegate,
+dataSource, cell registration, after this value is set</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L91-L95">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption16customIdentifierGSqSS__GS0_xq__"></a>
+                    <a name="//apple_ref/swift/Method/init(cellTypeOption:customIdentifier:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption16customIdentifierGSqSS__GS0_xq__">init(cellTypeOption:customIdentifier:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize controller with cellOptions and identifier is needed</p>
+
+<ul>
+<li>Parameters:
+
+<ul>
+<li>cellTypeOptions: ControllerCellTypeOption value to indicate how to 
+handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
+<li>customIdentifier: if <code>cellTypeOptions</code> is set to <code>.xibAuto</code> field can be nil;</li>
+</ul></li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cellTypeOption</span><span class="p">:</span> <span class="kt"><a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">xibAuto</span><span class="p">,</span>
+                            <span class="nv">customIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cellTypeOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>ControllerCellTypeOption value to indicate how to handle cell registration and dequeue. defaults to <code>.xibAuto</code></p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>customIdentifier</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>if <code>cellTypeOptions</code> is set to <code>.xibAuto</code> field can be nil;</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L111-L116">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Callback%20on%20Cell%20Actions"></a>
+                <a name="//apple_ref/swift/Section/Callback on Cell Actions" class="dashAnchor"></a>
+                <a href="#/Callback%20on%20Cell%20Actions">
+                  <h3 class="section-name">Callback on Cell Actions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController15willDisplayCellFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/willDisplayCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController15willDisplayCellFTxq_V10Foundation9IndexPath_T_">willDisplayCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback parameter for when <code>tableView(_:willDisplayCell:forRowAt)</code> function is called.
+- Closure parameters include: <code>CellType, DataType, IndexPath</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">willDisplayCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeneralTableController.html#/s:C19PropellerController22GeneralTableController12CallbackType">CallbackType</a></span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L122">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController10cellLoadedFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/cellLoaded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController10cellLoadedFTxq_V10Foundation9IndexPath_T_">cellLoaded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback parameter for when <code><a href="../Classes/GeneralTableController.html#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView12cellForRowAtV10Foundation9IndexPath_CSo15UITableViewCell">tableView(_:cellForRowAt:)</a></code> function is called.
+- Closure parameters include: <code>CellType, DataType, IndexPath</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cellLoaded</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeneralTableController.html#/s:C19PropellerController22GeneralTableController12CallbackType">CallbackType</a></span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L126">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController13didSelectCellFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/didSelectCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController13didSelectCellFTxq_V10Foundation9IndexPath_T_">didSelectCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback parameter for when <code><a href="../Classes/GeneralTableController.html#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView14didSelectRowAtV10Foundation9IndexPath_T_">tableView(_:didSelectRowAt:)</a></code> function is called.
+- Closure parameters include: <code>CellType, DataType, IndexPath</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">didSelectCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeneralTableController.html#/s:C19PropellerController22GeneralTableController12CallbackType">CallbackType</a></span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L130">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController15didDeselectCellFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/didDeselectCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController15didDeselectCellFTxq_V10Foundation9IndexPath_T_">didDeselectCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback parameter for when <code><a href="../Classes/GeneralTableController.html#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView16didDeselectRowAtV10Foundation9IndexPath_T_">tableView(_:didDeselectRowAt:)</a></code> function is called.
+- Closure parameters include: <code>CellType, DataType, IndexPath</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">didDeselectCell</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeneralTableController.html#/s:C19PropellerController22GeneralTableController12CallbackType">CallbackType</a></span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L134">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/ScrollViewDelegate%20Actions"></a>
+                <a name="//apple_ref/swift/Section/ScrollViewDelegate Actions" class="dashAnchor"></a>
+                <a href="#/ScrollViewDelegate%20Actions">
+                  <h3 class="section-name">ScrollViewDelegate Actions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController13viewDidScrollFCSo12UIScrollViewT_"></a>
+                    <a name="//apple_ref/swift/Property/viewDidScroll" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController13viewDidScrollFCSo12UIScrollViewT_">viewDidScroll</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback parameter for <code>UIScrollViewDelegate</code> called when tableView is scrolled
+- Closure parameters: <code>UIScrollView</code> that was scrolled on</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewDidScroll</span><span class="p">:</span> <span class="p">(</span><span class="kt">UIScrollView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L140">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/header/footer%20Actions"></a>
+                <a name="//apple_ref/swift/Section/header/footer Actions" class="dashAnchor"></a>
+                <a href="#/header/footer%20Actions">
+                  <h3 class="section-name">header/footer Actions</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController16headerForSectionFSiGSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Property/headerForSection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController16headerForSectionFSiGSqCSo6UIView_">headerForSection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback function that returns the header view for a particular section</p>
+
+<p><li><p>Closure parameters:</p></p>
+
+<p><ul>
+<li>(Int) section: section number to get view for</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>returns <code>UIView</code> for section passed in via parameter.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headerForSection</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span><span class="p">?</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L152">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController23titleForHeaderInSectionFSiGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/titleForHeaderInSection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController23titleForHeaderInSectionFSiGSqSS_">titleForHeaderInSection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback function that returns the title string for a particular section</p>
+
+<p><li><p>Closure parameters:</p></p>
+
+<p><ul>
+<li>(Int) section: section number to get view for</li>
+</ul></li>
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>title <code>String</code> for section passed in via parameter.</p></p>
+
+<p></div></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">titleForHeaderInSection</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>title <code>String</code> for section passed in via parameter.</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L162">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController21willDisplayHeaderViewFCSo6UIViewT_"></a>
+                    <a name="//apple_ref/swift/Property/willDisplayHeaderView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController21willDisplayHeaderViewFCSo6UIViewT_">willDisplayHeaderView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback function that gives you header view for configurations right before it is displayed</p>
+
+<ul>
+<li>Closure parameters:</li>
+<li>(UIView) headerView: header view that will be displayed</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">willDisplayHeaderView</span><span class="p">:</span> <span class="p">(</span><span class="kt">UIView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L171">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/UITableViewDelegate/DataSource"></a>
+                <a name="//apple_ref/swift/Section/UITableViewDelegate/DataSource" class="dashAnchor"></a>
+                <a href="#/UITableViewDelegate/DataSource">
+                  <h3 class="section-name">UITableViewDelegate/DataSource</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:viewForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView22viewForHeaderInSectionSi_GSqCSo6UIView_">tableView(_:viewForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L211-L214">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:heightForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView24heightForHeaderInSectionSi_V12CoreGraphics7CGFloat">tableView(_:heightForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L216-L218">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView14heightForRowAtV10Foundation9IndexPath_V12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:heightForRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView14heightForRowAtV10Foundation9IndexPath_V12CoreGraphics7CGFloat">tableView(_:heightForRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L220-L222">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView21numberOfRowsInSectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:numberOfRowsInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView21numberOfRowsInSectionSi_Si">tableView(_:numberOfRowsInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L224-L226">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController16numberOfSectionsFT2inCSo11UITableView_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController16numberOfSectionsFT2inCSo11UITableView_Si">numberOfSections(in:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L228-L230">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView12cellForRowAtV10Foundation9IndexPath_CSo15UITableViewCell"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:cellForRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView12cellForRowAtV10Foundation9IndexPath_CSo15UITableViewCell">tableView(_:cellForRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L232-L239">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView14didSelectRowAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:didSelectRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView14didSelectRowAtV10Foundation9IndexPath_T_">tableView(_:didSelectRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L241-L245">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView16didDeselectRowAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:didDeselectRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView16didDeselectRowAtV10Foundation9IndexPath_T_">tableView(_:didDeselectRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L247-L251">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView11willDisplayCSo15UITableViewCell8forRowAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:willDisplay:forRowAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView11willDisplayCSo15UITableViewCell8forRowAtV10Foundation9IndexPath_T_">tableView(_:willDisplay:forRowAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L253-L257">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView23titleForHeaderInSectionSi_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:titleForHeaderInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView23titleForHeaderInSectionSi_GSqSS_">tableView(_:titleForHeaderInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L259-L261">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController19scrollViewDidScrollFCSo12UIScrollViewT_"></a>
+                    <a name="//apple_ref/swift/Method/scrollViewDidScroll(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController19scrollViewDidScrollFCSo12UIScrollViewT_">scrollViewDidScroll(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L263-L265">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_"></a>
+                    <a name="//apple_ref/swift/Method/tableView(_:willDisplayHeaderView:forSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController9tableViewFTCSo11UITableView21willDisplayHeaderViewCSo6UIView10forSectionSi_T_">tableView(_:willDisplayHeaderView:forSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L267-L269">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController14scrollToBottomFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/scrollToBottom()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController14scrollToBottomFT_T_">scrollToBottom()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Scrolls tableView to last item in table.  If the height of your table is greater than the contentSize
+you simple goto top of table (y = 0 position).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">scrollToBottom</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L273-L277">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

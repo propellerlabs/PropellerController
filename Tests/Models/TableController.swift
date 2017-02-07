@@ -14,20 +14,24 @@ struct TableController {
     
     static let sampleData = ["Item one", "Item two"]
     
-    static var nameSelectionStubbed: (UITableView) -> StubbedGeneralTableController<NameCell, NameData> = { table in
-        let controller = StubbedGeneralTableController<NameCell, NameData>()
+    typealias NameSelectionType = GeneralTableController<NameCell, NameData>
+    typealias StubbedNameSelectionType = StubbedGeneralTableController<NameCell, NameData>
+    typealias NameMultiSelectType = GeneralMultiSelectionTableController<NameCell, String>
+    
+    static var nameSelectionStubbed: (UITableView) -> StubbedNameSelectionType = { table in
+        let controller = StubbedNameSelectionType()
         controller.tableView = table
         return controller
     }
     
-    static var nameSelection: (UITableView) -> GeneralTableController<NameCell, NameData> = { table in
-        let controller = GeneralTableController<NameCell, NameData>()
+    static var nameSelection: (UITableView) -> NameSelectionType = { table in
+        let controller = NameSelectionType()
         controller.tableView = table
         return controller
     }
     
-    static var nameMultiSelection: (UITableView) -> GeneralMultiSelectionTableController<NameCell, String> = { table in
-        let controller = GeneralMultiSelectionTableController<NameCell, String>()
+    static var nameMultiSelection: (UITableView) -> NameMultiSelectType = { table in
+        let controller = NameMultiSelectType()
         controller.tableView = table
         controller.setDataSource(sampleData)
         return controller

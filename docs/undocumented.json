@@ -1,0 +1,145 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralCollectionController.swift",
+      "line": 78,
+      "symbol": "GeneralCollectionController.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralCollectionController.swift",
+      "line": 82,
+      "symbol": "GeneralCollectionController.collectionView(_:numberOfItemsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralCollectionController.swift",
+      "line": 86,
+      "symbol": "GeneralCollectionController.collectionView(_:cellForItemAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralCollectionController.swift",
+      "line": 99,
+      "symbol": "GeneralCollectionController.collectionView(_:willDisplay:forItemAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralCollectionController.swift",
+      "line": 107,
+      "symbol": "GeneralCollectionController.collectionView(_:didSelectItemAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralMultiSelectionTableController.swift",
+      "line": 32,
+      "symbol": "GeneralMultiSelectionTableController.tableView(_:didSelectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralMultiSelectionTableController.swift",
+      "line": 41,
+      "symbol": "GeneralMultiSelectionTableController.tableView(_:didDeselectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralMultiSelectionTableController.swift",
+      "line": 50,
+      "symbol": "GeneralMultiSelectionTableController.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 211,
+      "symbol": "GeneralTableController.tableView(_:viewForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 216,
+      "symbol": "GeneralTableController.tableView(_:heightForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 220,
+      "symbol": "GeneralTableController.tableView(_:heightForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 224,
+      "symbol": "GeneralTableController.tableView(_:numberOfRowsInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 228,
+      "symbol": "GeneralTableController.numberOfSections(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 232,
+      "symbol": "GeneralTableController.tableView(_:cellForRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 241,
+      "symbol": "GeneralTableController.tableView(_:didSelectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 247,
+      "symbol": "GeneralTableController.tableView(_:didDeselectRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 253,
+      "symbol": "GeneralTableController.tableView(_:willDisplay:forRowAt:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 259,
+      "symbol": "GeneralTableController.tableView(_:titleForHeaderInSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 263,
+      "symbol": "GeneralTableController.scrollViewDidScroll(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nadohs/Documents/Internal-Projects/PropellerController/Source/GeneralTableController.swift",
+      "line": 267,
+      "symbol": "GeneralTableController.tableView(_:willDisplayHeaderView:forSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/nadohs/Documents/Internal-Projects/PropellerController"
+}
