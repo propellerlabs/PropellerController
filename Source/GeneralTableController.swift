@@ -20,15 +20,22 @@ public class GeneralTableController<CellType: UITableViewCell,
 
     public typealias CallbackType = (CellType, DataType, IndexPath) -> Void
     
+    /// row height for each cell
     public var rowHeight: CGFloat = 44
+    
+    /// height for header view
     public var headerHeight: CGFloat = 0
     
-    var flaggedIndex: Int = -1
-    var flaggedState: Bool = false
+    /// saved index for keeping track of a position or value related to the contents
+    public var flaggedIndex: Int = -1
+    
+    /// saved boolean state for table
+    public var flaggedState: Bool = false
     
     var cellTypeOption: ControllerCellTypeOption = .xibAuto
     var customIdentifier: String?
     
+    /// flag to indicate whether to use dynamic row height calculations
     public var dynamicRowHeights = false {
         willSet {
             if newValue == true {
@@ -37,18 +44,23 @@ public class GeneralTableController<CellType: UITableViewCell,
         }
     }
     
+    /// dataSource for table, should not be set directly, instead use `setDataSource(_:)`
     var dataSource = [[DataType]]() {
         didSet { tableView?.reloadData() }
     }
     
+    /// set dataSource for tableView from array type
     public func setDataSource(_ dataSource: [DataType]) {
         self.dataSource = [dataSource]
     }
     
+    /// set dataSource for tableView from nested array type
     public func setDataSource(_ dataSource: [[DataType]]) {
         self.dataSource = dataSource
     }
     
+    /// tableView to be controlled, setup on tableView is called automatically for delegate,
+    /// dataSource, cell registration, after this value is set
     public weak var tableView: UITableView! {
         didSet {
             setupTableView()
@@ -62,7 +74,13 @@ public class GeneralTableController<CellType: UITableViewCell,
         tableView?.estimatedRowHeight = 44.0
     }
     
-
+    /** Initialize controller with cellOptions and identifier is needed
+     
+    - Parameters:
+        - cellTypeOptions: ControllerCellTypeOption value to indicate how to 
+     handle cell registration and dequeue. defaults to `.xibAuto`
+        - customIdentifier: if `cellTypeOptions` is set to `.xibAuto` field can be nil;
+    */
     public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
                             customIdentifier: String? = nil) {
         self.init()
@@ -72,22 +90,38 @@ public class GeneralTableController<CellType: UITableViewCell,
     
     //MARK: - Callback on Cell Actions -
     
+    /// Callback parameter for when `tableView(_:willDisplayCell:forRowAt)` function is called.
+    /// - Closure parameters include: `CellType, DataType, IndexPath`
     public var willDisplayCell: CallbackType = { _, _, _ in }
     
+    /// Callback parameter for when `tableView(_:cellForRowAt:)` function is called.
+    /// - Closure parameters include: `CellType, DataType, IndexPath`
     public var cellLoaded: CallbackType = { _, _, _ in }
     
+    /// Callback parameter for when `tableView(_:didSelectRowAt:)` function is called.
+    /// - Closure parameters include: `CellType, DataType, IndexPath`
     public var didSelectCell: CallbackType = { _, _, _ in }
-    
+
+    /// Callback parameter for when `tableView(_:didDeselectRowAt:)` function is called.
+    /// - Closure parameters include: `CellType, DataType, IndexPath`
     public var didDeselectCell: CallbackType = { _, _, _ in }
-    
-    public var didSelectIndex: (Int) -> Void = { _ in }
     
     //MARK: - ScrollViewDelegate Actions -
     
-    public var viewDidScroll:(UIScrollView) -> Void = { _ in }
+    /// Callback parameter for `UIScrollViewDelegate` called when tableView is scrolled
+    /// - Closure parameters: `UIScrollView` that was scrolled on
+    public var viewDidScroll: (UIScrollView) -> Void = { _ in }
     
     //MARK: - header/footer Actions -
     
+    /** 
+     Callback function that returns the header view for a particular section
+     
+     - Closure parameters:
+        - (Int) section: section number to get view for
+       
+     - Returns: returns `UIView` for section passed in via parameter.
+    */
     public var headerForSection: (Int) -> UIView? = { _ in return nil }
     
     public var titleForHeaderInSection: (Int) -> String? = { _ in return nil }
@@ -163,7 +197,6 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectIndex(indexPath.row)
         let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
