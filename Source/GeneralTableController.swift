@@ -8,13 +8,39 @@
 
 import UIKit
 
+/// Option enum to determine what time of cell registering and dequeueing to use
 public enum ControllerCellTypeOption {
+    /// UITableView cell subclassed with no xib or storyboard, `customIdentifier` 
+    /// required in initializer
     case classOnly
+    /// UITableView cell from storyboard, `customIdentifier` required in `GeneralTableController` 
+    /// initializer
     case storyboard
+    /// UITableView cell subclassed with xib file that has matching names across class name, 
+    /// xib file name, and reuseIdentifier.
     case xibAuto
+    /// UITableView cell subclassed with xib, where xib and class have matching names, 
+    /// but the identifier is different and is required in `GeneralTableController` initizier.
     case xibManual
 }
 
+/// Generic TableView Controller requiring Cell and Data associated types to be specified.
+/// Define class like so: `GeneralTableController<SomeCellType, SomeDataType>`.
+/// Using as below:
+///
+/// ```swift
+/// static var nameSelection: (UITableView) -> GeneralTableController<NameCell, NameData> = { table in
+///    let controller = GeneralTableController<NameCell, NameData>()
+///    controller.tableView = table
+///
+///    controller.willDisplayCell = { cell, data, iPath in
+///        cell.name = data.first
+///        cell.image.asyncSetImage(data.imagePath)
+///        cell.location = "row:" + iPath.row
+///    }
+///    return controller
+/// }
+/// ```
 public class GeneralTableController<CellType: UITableViewCell,
                             DataType>: NSObject, UITableViewDataSource, UITableViewDelegate {
 

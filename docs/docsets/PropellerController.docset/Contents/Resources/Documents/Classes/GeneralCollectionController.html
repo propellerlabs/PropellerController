@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GeneralCollectionController Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/GeneralCollectionController" class="dashAnchor"></a>
+    <a title="GeneralCollectionController Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">PropellerController Docs</a> (64% documented)</p>
+        <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fswift_output%2Fdocsets%2FPropellerController%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">PropellerController Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GeneralCollectionController Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralCollectionController.html">GeneralCollectionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralMultiSelectionTableController.html">GeneralMultiSelectionTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeneralTableController.html">GeneralTableController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GeneralCollectionController</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Handles common <code>UICollectionViewDelegate</code> and <code>UICollectionViewDataSource</code> methods for a <code>UICollectionView</code></p>
+
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">MyCustomCell</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">collectionView</span> <span class="o">=</span> <span class="n">collectionView</span>
+    <span class="n">controller</span><span class="o">.</span><span class="nf">setDataSource</span><span class="p">([</span><span class="s">"Item One"</span><span class="p">,</span> <span class="s">"Item Two"</span><span class="p">])</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+        <span class="n">cell</span><span class="o">.</span><span class="n">textLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="p">}</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController14collectionViewXwGSQCSo16UICollectionView_"></a>
+                    <a name="//apple_ref/swift/Property/collectionView" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController14collectionViewXwGSQCSo16UICollectionView_">collectionView</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>UICollectionView</code> to set the <code>dataSource</code> and <code>delegate</code> on</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">collectionView</span><span class="p">:</span> <span class="kt">UICollectionView</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L30-L36">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Setting%20DataSource"></a>
+                <a name="//apple_ref/swift/Section/Setting DataSource" class="dashAnchor"></a>
+                <a href="#/Setting%20DataSource">
+                  <h3 class="section-name">Setting DataSource</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController13setDataSourceFGSaq__T_"></a>
+                    <a name="//apple_ref/swift/Method/setDataSource(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController13setDataSourceFGSaq__T_">setDataSource(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the <code>dataSouce</code> with an array of <code>DataType</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDataSource</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="p">[</span><span class="kt">DataType</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L41-L43">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController13setDataSourceFGSaGSaq___T_"></a>
+                    <a name="//apple_ref/swift/Method/setDataSource(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController13setDataSourceFGSaGSaq___T_">setDataSource(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the <code>dataSource</code> with an array of <code>[DataType]</code>
+for use in supporting sectioned <code>UICollectionView</code>s</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDataSource</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataSource</span><span class="p">:</span> <span class="p">[[</span><span class="kt">DataType</span><span class="p">]])</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L47-L49">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Callbacks"></a>
+                <a name="//apple_ref/swift/Section/Callbacks" class="dashAnchor"></a>
+                <a href="#/Callbacks">
+                  <h3 class="section-name">Callbacks</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController13didSelectCellFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/didSelectCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController13didSelectCellFTxq_V10Foundation9IndexPath_T_">didSelectCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback that takes <code>CellType</code>, <code>DataType</code>, <code>IndexPath</code> and executes a closure
+when a cell is selected</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">didSelectCell</span><span class="p">:</span> <span class="p">(</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">,</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L55">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController15willDisplayCellFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/willDisplayCell" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController15willDisplayCellFTxq_V10Foundation9IndexPath_T_">willDisplayCell</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback that takes <code>CellType</code>, <code>DataType</code>, <code>IndexPath</code> and executes a closure
+when a cell is will be displayed</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">willDisplayCell</span><span class="p">:</span> <span class="p">(</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">,</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L59">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController10cellLoadedFTxq_V10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Property/cellLoaded" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController10cellLoadedFTxq_V10Foundation9IndexPath_T_">cellLoaded</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback that takes <code>CellType</code>, <code>DataType</code>, <code>IndexPath</code> and executes a closure
+when a cell is loaded</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cellLoaded</span><span class="p">:</span> <span class="p">(</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">,</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L63">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController16headerForSectionFSiGSqCSo6UIView_"></a>
+                    <a name="//apple_ref/swift/Property/headerForSection" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController16headerForSectionFSiGSqCSo6UIView_">headerForSection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback that takes a section number (<code>Int</code>) and executes a closure
+that returns a <code>UIView</code> for a section&rsquo;s header</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headerForSection</span><span class="p">:</span> <span class="p">(</span><span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIView</span><span class="p">?</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span> <span class="k">return</span> <span class="kc">nil</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L67">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController27GeneralCollectionController16sizeForIndexPathFV10Foundation9IndexPathVSC6CGSize"></a>
+                    <a name="//apple_ref/swift/Property/sizeForIndexPath" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController27GeneralCollectionController16sizeForIndexPathFV10Foundation9IndexPathVSC6CGSize">sizeForIndexPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Callback that takes an <code>IndexPath</code> and executes a closure
+that returns a <code>CGSize</code> for the cell at that <code>IndexPath</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">sizeForIndexPath</span><span class="p">:</span> <span class="p">(</span><span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGSize</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span> <span class="k">in</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L71">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/UICollectionViewDataSource,%20UICollectionViewDelegate"></a>
+                <a name="//apple_ref/swift/Section/UICollectionViewDataSource, UICollectionViewDelegate" class="dashAnchor"></a>
+                <a href="#/UICollectionViewDataSource,%20UICollectionViewDelegate">
+                  <h3 class="section-name">UICollectionViewDataSource, UICollectionViewDelegate</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController16numberOfSectionsFT2inCSo16UICollectionView_Si"></a>
+                    <a name="//apple_ref/swift/Method/numberOfSections(in:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController16numberOfSectionsFT2inCSo16UICollectionView_Si">numberOfSections(in:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L78-L80">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView22numberOfItemsInSectionSi_Si"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:numberOfItemsInSection:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView22numberOfItemsInSectionSi_Si">collectionView(_:numberOfItemsInSection:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L82-L84">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView13cellForItemAtV10Foundation9IndexPath_CSo20UICollectionViewCell"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:cellForItemAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView13cellForItemAtV10Foundation9IndexPath_CSo20UICollectionViewCell">collectionView(_:cellForItemAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L86-L93">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView11willDisplayCSo20UICollectionViewCell9forItemAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:willDisplay:forItemAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView11willDisplayCSo20UICollectionViewCell9forItemAtV10Foundation9IndexPath_T_">collectionView(_:willDisplay:forItemAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L99-L105">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView15didSelectItemAtV10Foundation9IndexPath_T_"></a>
+                    <a name="//apple_ref/swift/Method/collectionView(_:didSelectItemAt:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController27GeneralCollectionController14collectionViewFTCSo16UICollectionView15didSelectItemAtV10Foundation9IndexPath_T_">collectionView(_:didSelectItemAt:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L107-L111">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

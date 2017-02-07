@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Classes  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">PropellerController Docs</a> (64% documented)</p>
+        <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fswift_output%2Fdocsets%2FPropellerController%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">PropellerController Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Classes  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/GeneralCollectionController.html">GeneralCollectionController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeneralMultiSelectionTableController.html">GeneralMultiSelectionTableController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeneralTableController.html">GeneralTableController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Classes</h1>
+            <p>The following classes are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C19PropellerController27GeneralCollectionController"></a>
+                    <a name="//apple_ref/swift/Class/GeneralCollectionController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C19PropellerController27GeneralCollectionController">GeneralCollectionController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Handles common <code>UICollectionViewDelegate</code> and <code>UICollectionViewDataSource</code> methods for a <code>UICollectionView</code></p>
+
+<pre class="highlight swift"><code>    <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">MyCustomCell</span><span class="p">,</span> <span class="kt">String</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">collectionView</span> <span class="o">=</span> <span class="n">collectionView</span>
+    <span class="n">controller</span><span class="o">.</span><span class="nf">setDataSource</span><span class="p">([</span><span class="s">"Item One"</span><span class="p">,</span> <span class="s">"Item Two"</span><span class="p">])</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+        <span class="n">cell</span><span class="o">.</span><span class="n">textLabel</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="p">}</span>
+</code></pre>
+
+                        <a href="Classes/GeneralCollectionController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralCollectionController.swift#L21-L112">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C19PropellerController22GeneralTableController"></a>
+                    <a name="//apple_ref/swift/Class/GeneralTableController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C19PropellerController22GeneralTableController">GeneralTableController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generic TableView Controller requiring Cell and Data associated types to be specified.
+Define class like so: <code>GeneralTableController&lt;SomeCellType, SomeDataType&gt;</code>.
+Using as below:</p>
+
+<pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nameSelection</span><span class="p">:</span> <span class="p">(</span><span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">table</span> <span class="k">in</span>
+   <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span><span class="p">()</span>
+   <span class="n">controller</span><span class="o">.</span><span class="n">tableView</span> <span class="o">=</span> <span class="n">table</span>
+
+   <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">iPath</span> <span class="k">in</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">first</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="nf">asyncSetImage</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">imagePath</span><span class="p">)</span>
+       <span class="n">cell</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s">"row:"</span> <span class="o">+</span> <span class="n">iPath</span><span class="o">.</span><span class="n">row</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">controller</span>
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Classes/GeneralTableController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
+                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L44-L278">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:C19PropellerController36GeneralMultiSelectionTableController"></a>
+                    <a name="//apple_ref/swift/Class/GeneralMultiSelectionTableController" class="dashAnchor"></a>
+                    <a class="token" href="#/s:C19PropellerController36GeneralMultiSelectionTableController">GeneralMultiSelectionTableController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subclass of <code><a href="Classes/GeneralTableController.html">GeneralTableController</a></code> that allows you you keep track of selected dataSource entry. Requires <code>DataType</code> to be <code>Hashable</code>.
+Also you can use <code>toggleSelection</code> function to manually invert a data value&rsquo;s selection state.</p>
+
+                        <a href="Classes/GeneralMultiSelectionTableController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralMultiSelectionTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/GeneralTableController.html">GeneralTableController</a></span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralMultiSelectionTableController.swift#L13-L60">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

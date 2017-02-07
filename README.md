@@ -7,7 +7,7 @@
 #Propeller Controller
 
 
-The goal of this framework is to allow you to move as much of your table/collection controller content off into a static var elsewhere, to remove clutter, reduce state, and increase code clairity.
+The goal of this framework is to allow you to move as much of your table/collection controller content off into a static var elsewhere, to remove clutter, reduce state, and increase code clairity. Read the full documentation [Swift](https://propellerlabs.github.io/PropellerController/) generated using [Jazzy](https://github.com/realm/jazzy).
 
 
 ## Installation
