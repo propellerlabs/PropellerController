@@ -147,7 +147,7 @@ public class GeneralTableController<CellType: UITableViewCell,
      - Closure parameters:
         - (Int) section: section number to get view for
        
-     - Returns: returns `UIView` for section passed in via parameter.
+     - Returns: `UIView` for section passed in via parameter.
     */
     public var headerForSection: (Int) -> UIView? = { _ in return nil }
 
