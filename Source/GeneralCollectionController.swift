@@ -18,7 +18,7 @@ import UIKit
 ///         cell.textLabel.text = data
 ///     }
 /// ```
-public final class GeneralCollectionController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+open class GeneralCollectionController<CellType: UICollectionViewCell, DataType>: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var selectedIndex = -1
     
