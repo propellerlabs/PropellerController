@@ -41,7 +41,7 @@ public enum ControllerCellTypeOption {
 ///    return controller
 /// }
 /// ```
-public class GeneralTableController<CellType: UITableViewCell,
+open class GeneralTableController<CellType: UITableViewCell,
                             DataType>: NSObject, UITableViewDataSource, UITableViewDelegate {
 
     /// Typealias for common tableView callback closure
@@ -239,13 +239,17 @@ public class GeneralTableController<CellType: UITableViewCell,
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellType else {
+            return
+        }
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = loadCellFrom(table: tableView, atIndexPath: indexPath)!
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellType else {
+            return
+        }
         let data = dataSource[indexPath.section][indexPath.row]
         didDeselectCell(cell, data, indexPath)
     }
