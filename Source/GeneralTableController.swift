@@ -41,11 +41,56 @@ public enum ControllerCellTypeOption {
 ///    return controller
 /// }
 /// ```
+
+protocol TableControllable: class {
+    func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    var cellType: Any.Type { get }
+    var dataSourceAny: [[Any]] { get }
+}
+
 open class GeneralTableController<CellType: UITableViewCell,
-                            DataType>: NSObject, UITableViewDataSource, UITableViewDelegate {
+                            DataType>: NSObject, UITableViewDataSource, UITableViewDelegate, TableControllable {
 
     /// Typealias for common tableView callback closure
     public typealias CallbackType = (CellType, DataType, IndexPath) -> Void
+    
+    var cellType: Any.Type {
+        return CellType.self
+    }
+    
+    var dataSourceAny: [[Any]] {
+        return dataSource.map({ $0.flatMap({ val in val as Any })})
+    }
+    
+    var masterController: TableControllable?
+    
+    func dataMirror(masterController: TableControllable) {
+        self.masterController = masterController
+    }
+    
+    var subControllers = [String: TableControllable]()
+    
+    func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
+        let identifier = String(describing: T.self)
+        
+        //exists already
+        if let controller = subControllers[identifier] {
+            return controller as! GeneralTableController<T, DataType>
+        }
+        
+        //create controller
+        let controller = GeneralTableController<T, DataType>()
+        subControllers[identifier] = controller
+        return controller
+    }
+    
+    var cellTypeIdentifier: String {
+        return String(describing: CellType.self)
+    }
+    
+    var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
+        return String(describing: CellType.self)
+    }
     
     /// Row height for each cell
     public var rowHeight: CGFloat = 44
@@ -72,18 +117,25 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
     
     /// dataSource for table, should not be set directly, instead use `setDataSource(_:)`
-    var dataSource = [[DataType]]() {
+    var _dataSource = [[DataType]]() {
         didSet { tableView?.reloadData() }
+    }
+    var dataSource: [[DataType]] {
+        if let master = masterController {
+            return master.dataSourceAny.map({ $0.flatMap({val in val as? DataType})})
+        } else {
+            return _dataSource
+        }
     }
     
     /// set dataSource for tableView from array type
     public func setDataSource(_ dataSource: [DataType]) {
-        self.dataSource = [dataSource]
+        _dataSource = [dataSource]
     }
     
     /// set dataSource for tableView from nested array type
     public func setDataSource(_ dataSource: [[DataType]]) {
-        self.dataSource = dataSource
+        _dataSource = dataSource
     }
     
     /// tableView to be controlled, setup on tableView is called automatically for delegate,
@@ -229,13 +281,31 @@ open class GeneralTableController<CellType: UITableViewCell,
         return dataSource.count
     }
     
+    func routeCellType( table: UITableView, data:DataType, indexPath: IndexPath) -> UITableViewCell? {
+        guard let identifier = cellTypeForIndexData(data, indexPath) else {
+            return nil
+        }
+        if let controller = subControllers[identifier] {
+            return controller.tableView(table, cellForRowAt: indexPath)
+        } else {
+            return nil
+        }
+        
+    }
+    
     public func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = loadCellFrom(table: tableView, atIndexPath: indexPath) else {
+        let data = dataSource[indexPath.section][indexPath.row]
+        var cell = routeCellType(table: tableView, data: data, indexPath: indexPath)
+        if cell != nil {
+            return cell!
+        }
+        cell = loadCellFrom(table: tableView,
+                            atIndexPath: indexPath)
+        if cell == nil {
             return UITableViewCell()
         }
-        let data = dataSource[indexPath.section][indexPath.row]
-        cellLoaded(cell, data, indexPath)
-        return cell
+        cellLoaded(cell as! CellType, data, indexPath)
+        return cell!
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -279,4 +349,12 @@ open class GeneralTableController<CellType: UITableViewCell,
         let target = tableView.contentSize.height - tableView.frame.height
         tableView.contentOffset.y = target < 0 ? 0 : target
     }
+}
+
+extension UITableView {
+    
+    static var cellTypeIdentifier: String {
+        return String(describing: self.self)
+    }
+    
 }
