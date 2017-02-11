@@ -62,7 +62,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         return dataSource.map({ $0.flatMap({ val in val as Any })})
     }
     
-    var masterController: TableControllable?
+    weak var masterController: TableControllable?
     
     func dataMirror(masterController: TableControllable) {
         self.masterController = masterController
@@ -80,6 +80,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         
         //create controller
         let controller = GeneralTableController<T, DataType>()
+        controller.dataMirror(masterController: self)
         subControllers[identifier] = controller
         return controller
     }
