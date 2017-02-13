@@ -43,7 +43,7 @@ public enum ControllerCellTypeOption {
 /// ```
 
 protocol TableControllable: class {
-    func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     var cellType: Any.Type { get }
     var dataSourceAny: [[Any]] { get }
 }
@@ -70,7 +70,8 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     var subControllers = [String: TableControllable]()
     
-    func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
+    @discardableResult
+    public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
         let identifier = String(describing: T.self)
         
         //exists already
@@ -80,7 +81,9 @@ open class GeneralTableController<CellType: UITableViewCell,
         
         //create controller
         let controller = GeneralTableController<T, DataType>()
+        controller.registerCell(tableView: tableView)
         controller.dataMirror(masterController: self)
+        
         subControllers[identifier] = controller
         return controller
     }
@@ -89,8 +92,8 @@ open class GeneralTableController<CellType: UITableViewCell,
         return String(describing: CellType.self)
     }
     
-    var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
-        return String(describing: CellType.self)
+    public var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
+        return nil 
     }
     
     /// Row height for each cell
@@ -150,7 +153,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     func setupTableView() {
         tableView?.delegate = self
         tableView?.dataSource = self
-        registerCell()
+        registerCell(tableView: tableView)
         tableView?.estimatedRowHeight = 44.0
     }
     
@@ -225,10 +228,13 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     //MARK: - Cells -
     
-    func registerCell() {
+    func registerCell(tableView: UITableView?) {
+        guard let tableView = tableView else {
+            return
+        }
         switch cellTypeOption {
         case .xibAuto:
-            tableView?.useCellOfType(CellType.self)
+            tableView.useCellOfType(CellType.self)
         case .xibManual:
             guard let identifier = customIdentifier else {
                 assert(false, ".xibManual requires cell `customIdentifier` ")
@@ -286,6 +292,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         guard let identifier = cellTypeForIndexData(data, indexPath) else {
             return nil
         }
+        print(identifier)
         if let controller = subControllers[identifier] {
             return controller.tableView(table, cellForRowAt: indexPath)
         } else {
@@ -294,7 +301,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         
     }
     
-    public func tableView(_ _tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = dataSource[indexPath.section][indexPath.row]
         var cell = routeCellType(table: tableView, data: data, indexPath: indexPath)
         if cell != nil {
@@ -311,8 +318,10 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CellType else {
+            print("failed DidSelect \(tableView.cellForRow(at: indexPath)) \n type = \(type(of:  tableView.cellForRow(at: indexPath)))")
             return
         }
+        print("passed DidSelect \(cell)")
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
     }
@@ -352,9 +361,9 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
 }
 
-extension UITableView {
+extension UITableViewCell {
     
-    static var cellTypeIdentifier: String {
+    public static var cellTypeIdentifier: String {
         return String(describing: self.self)
     }
     
