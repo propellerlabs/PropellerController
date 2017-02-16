@@ -88,8 +88,11 @@ class GeneralTableControllerTests: XCTestCase {
             XCTAssert(iPath.section == 0)
             expectation.fulfill()
         }
-        let indexPath = IndexPath(row: 2, section: 0)
-        let _ = controller.tableView(table, didSelectRowAt: indexPath)
+        let index = 2
+        let indexPath = IndexPath(row: index, section: 0)
+        let data = testNames[index]
+        let cell = controller.tableView(table, cellForRowAt: indexPath) as! NameCell
+        controller.didSelectCell(cell, data, indexPath)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
@@ -104,8 +107,11 @@ class GeneralTableControllerTests: XCTestCase {
             XCTAssert(iPath.section == 0)
             expectation.fulfill()
         }
-        let indexPath = IndexPath(row: 2, section: 0)
-        let _ = controller.tableView(table, didDeselectRowAt: indexPath)
+        let index = 2
+        let indexPath = IndexPath(row: index, section: 0)
+        let data = testNames[index]
+        let cell = controller.tableView(table, cellForRowAt: indexPath) as! NameCell
+        controller.didDeselectCell(cell, data, indexPath)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
