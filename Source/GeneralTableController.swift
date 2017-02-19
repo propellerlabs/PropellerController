@@ -42,8 +42,11 @@ public enum ControllerCellTypeOption {
 /// }
 /// ```
 
-protocol TableControllable: class {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+protocol TableControllable: class, UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     var cellType: Any.Type { get }
     var dataSourceAny: [[Any]] { get }
 }
@@ -72,14 +75,20 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     @discardableResult
     public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
-        let identifier = String(describing: type(of: type))
-        
+        var identifier = String(describing: type(of: type).self)
+        if identifier.contains(".") {
+            identifier = identifier.components(separatedBy: ".").first ?? ""
+        }
         print("\(identifier), ofCell")
-        //exists already
+
+        return genericTableControllerFor(identifier: identifier)
+    }
+    
+    func genericTableControllerFor<T>(identifier: String) -> GeneralTableController<T, DataType> {
+        //check if exists
         if let controller = subControllers[identifier] {
             return controller as! GeneralTableController<T, DataType>
         }
-        
         //create controller
         let controller = GeneralTableController<T, DataType>()
         controller.registerCell(tableView: tableView)
@@ -87,6 +96,9 @@ open class GeneralTableController<CellType: UITableViewCell,
         
         subControllers[identifier] = controller
         return controller
+    }
+    func tableControllableFor(identifier: String) -> TableControllable? {
+        return subControllers[identifier]
     }
     
     var cellTypeIdentifier: String {
@@ -289,66 +301,59 @@ open class GeneralTableController<CellType: UITableViewCell,
         return dataSource.count
     }
     
-    func routeCellType( table: UITableView, data:DataType, indexPath: IndexPath) -> UITableViewCell? {
+    func routeTableController(data: DataType, indexPath: IndexPath) -> TableControllable? {
         guard let identifier = cellTypeForIndexData(data, indexPath) else {
             return nil
         }
         print(identifier)
-        if let controller = subControllers[identifier] {
-            return controller.tableView(table, cellForRowAt: indexPath)
-        } else {
-            return nil
-        }
-        
+        return subControllers[identifier]
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let data = dataSource[indexPath.section][indexPath.row]
-        var cell = routeCellType(table: tableView, data: data, indexPath: indexPath)
-        if cell != nil {
-            return cell!
+        if let route = routeTableController(data: data, indexPath: indexPath) {
+            return route.tableView(tableView, cellForRowAt: indexPath)
         }
-        cell = loadCellFrom(table: tableView,
-                            atIndexPath: indexPath)
-        if cell == nil {
+        guard let cell = loadCellFrom(table: tableView,
+                                      atIndexPath: indexPath) else {
             return UITableViewCell()
         }
-        cellLoaded(cell as! CellType, data, indexPath)
-        return cell!
+        cellLoaded(cell, data, indexPath)
+        return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = dataSource[indexPath.section][indexPath.row]
         guard let cell = tableView.cellForRow(at: indexPath) as? CellType else {
-            print("failed DidSelect \(tableView.cellForRow(at: indexPath)) \n type = \(type(of:  tableView.cellForRow(at: indexPath)))")
+            //Reroute to correct controller
+            if let route = routeTableController(data: data, indexPath: indexPath) {
+                route.tableView?(tableView, didSelectRowAt: indexPath)
+            }
             return
         }
         print("passed DidSelect \(cell)")
-        let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let data = dataSource[indexPath.section][indexPath.row]
         guard let cell = tableView.cellForRow(at: indexPath) as? CellType else {
+            //Reroute to correct controller
+            if let route = routeTableController(data: data, indexPath: indexPath) {
+                route.tableView?(tableView, didDeselectRowAt: indexPath)
+            }
             return
         }
-        let data = dataSource[indexPath.section][indexPath.row]
         didDeselectCell(cell, data, indexPath)
-    }
-    
-    func rerouteWillDisplay<T: UITableViewCell>(_ tableView: UITableView, willDisplay cell: T, forRowAt indexPath: IndexPath) {
-        print("cell reroute is \(cell.self) and checks \(cell is NameTwoCell)")
-        print("CELL IDENTIFIER = \(String(describing: T.self))")
-        print("CELL type(of:)\(type(of: cell))")
-        ofCell(type: type(of: cell)).tableView(tableView,
-                                       willDisplay: cell,
-                                       forRowAt: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cellValue = cell as? CellType else {
-            rerouteWillDisplay(tableView,
-                               willDisplay: cell,
-                               forRowAt: indexPath)
+            //Reroute to correct controller
+            let identifier = "\(type(of: cell))"
+            subControllers[identifier]?.tableView?(tableView,
+                                                   willDisplay: cell,
+                                                   forRowAt: indexPath)
             return
         }
         let data = dataSource[indexPath.section][indexPath.row]

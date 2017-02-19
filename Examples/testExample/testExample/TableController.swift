@@ -48,6 +48,15 @@ struct TableController {
                 cell.nameTwoLabel.text = data.first
                 cell.backgroundColor = .orange
         }
+        
+        controller.ofCell(type: NameTwoCell.self)
+            .didSelectCell = { cell, data, _ in
+                print(data)
+        }
+        controller.ofCell(type: NameTwoCell.self)
+            .didDeselectCell = { cell, data, _ in
+                print(data)
+        }
         return controller
     }
 }
