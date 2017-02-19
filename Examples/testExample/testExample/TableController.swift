@@ -15,8 +15,22 @@ struct TableController {
     static var nameTableController: (UITableView) -> NameTableType = { table in
         let controller = NameTableType()
         controller.tableView = table
-        controller.setDataSource(testNames)
+        controller.setDataSource(testNames + testNames)
         
+        
+        //which cell to choose
+        controller.cellTypeForIndexData = { data, iPath in
+            if iPath.row % 3 == 0 {
+                return NameAgainCell.cellTypeIdentifier
+            } else if iPath.row % 2 == 0 {
+                return NameCell.cellTypeIdentifier
+            } else {
+                return NameTwoCell.cellTypeIdentifier
+            }
+        }
+        
+        
+        //cell 1
         controller.willDisplayCell = { cell, data, _ in
             cell.nameLabel.text = data.first
         }
@@ -28,15 +42,8 @@ struct TableController {
         controller.didDeselectCell = { cell, _, _ in
             cell.backgroundColor = .white
         }
-         
-        controller.cellTypeForIndexData = { data, iPath in
-            if iPath.row % 2 == 0 {
-                return NameCell.cellTypeIdentifier
-            } else {
-                return NameTwoCell.cellTypeIdentifier
-            }
-        }
 
+        //cell 2
         controller.ofCell(type: NameTwoCell.self)
             .cellLoaded = { cell, data, _ in
                 cell.nameTwoLabel.text = data.first
@@ -54,6 +61,30 @@ struct TableController {
                 print(data)
         }
         controller.ofCell(type: NameTwoCell.self)
+            .didDeselectCell = { cell, data, _ in
+                print(data)
+        }
+        
+        
+        //cell 3
+        controller.ofCell(type: NameAgainCell.self,
+                          cellTypeOption: .xibManual("NameCellB"))
+            .cellLoaded = { cell, data, _ in
+                cell.nameAgainLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        
+        controller.ofCell(type: NameAgainCell.self)
+            .willDisplayCell = { cell, data, _ in
+                cell.nameAgainLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        
+        controller.ofCell(type: NameAgainCell.self)
+            .didSelectCell = { cell, data, _ in
+                print(data)
+        }
+        controller.ofCell(type: NameAgainCell.self)
             .didDeselectCell = { cell, data, _ in
                 print(data)
         }

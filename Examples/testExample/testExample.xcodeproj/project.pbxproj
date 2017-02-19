@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522270731E595F8100A4E731 /* NameMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522270711E595F8100A4E731 /* NameMoreCell.swift */; };
+		522270741E595F8100A4E731 /* NameMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522270721E595F8100A4E731 /* NameMoreCell.xib */; };
 		523728ED1E5117510098E3D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523728EC1E5117510098E3D9 /* AppDelegate.swift */; };
 		523728EF1E5117510098E3D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523728EE1E5117510098E3D9 /* ViewController.swift */; };
 		523728F21E5117510098E3D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523728F01E5117510098E3D9 /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		522270711E595F8100A4E731 /* NameMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NameMoreCell.swift; path = ../../../Tests/Cells/NameMoreCell.swift; sourceTree = "<group>"; };
+		522270721E595F8100A4E731 /* NameMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NameMoreCell.xib; path = ../../../Tests/Cells/NameMoreCell.xib; sourceTree = "<group>"; };
 		523728E91E5117510098E3D9 /* testExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		523728EC1E5117510098E3D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		523728EE1E5117510098E3D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 		52D4B91B1E5135EB00859786 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				522270711E595F8100A4E731 /* NameMoreCell.swift */,
+				522270721E595F8100A4E731 /* NameMoreCell.xib */,
 				52D4B91C1E5135F400859786 /* NameAgainCell.swift */,
 				52D4B91D1E5135F400859786 /* NameAgainCell.xib */,
 				52D4B91E1E5135F400859786 /* NameCell.swift */,
@@ -252,6 +258,7 @@
 				52D4B9271E5135F400859786 /* NameCell.xib in Resources */,
 				523728F41E5117510098E3D9 /* Assets.xcassets in Resources */,
 				523728F21E5117510098E3D9 /* Main.storyboard in Resources */,
+				522270741E595F8100A4E731 /* NameMoreCell.xib in Resources */,
 				52D4B9251E5135F400859786 /* NameAgainCell.xib in Resources */,
 				52D4B9291E5135F400859786 /* NameTwoCell.xib in Resources */,
 			);
@@ -271,6 +278,7 @@
 				52D4B92F1E51367D00859786 /* NameData.swift in Sources */,
 				52D4B9281E5135F400859786 /* NameTwoCell.swift in Sources */,
 				52D4B9261E5135F400859786 /* NameCell.swift in Sources */,
+				522270731E595F8100A4E731 /* NameMoreCell.swift in Sources */,
 				52D4B9241E5135F400859786 /* NameAgainCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

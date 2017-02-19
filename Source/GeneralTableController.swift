@@ -9,19 +9,34 @@
 import UIKit
 
 /// Option enum to determine what time of cell registering and dequeueing to use
+/// associated `String` values are `reuseIdentifier`
 public enum ControllerCellTypeOption {
     /// UITableView cell subclassed with no xib or storyboard, `customIdentifier` 
     /// required in initializer
-    case classOnly
+    case classOnly(String)
     /// UITableView cell from storyboard, `customIdentifier` required in `GeneralTableController` 
     /// initializer
-    case storyboard
+    case storyboard(String)
     /// UITableView cell subclassed with xib file that has matching names across class name, 
     /// xib file name, and reuseIdentifier.
     case xibAuto
     /// UITableView cell subclassed with xib, where xib and class have matching names, 
     /// but the identifier is different and is required in `GeneralTableController` initizier.
-    case xibManual
+    case xibManual(String)
+    
+    /// Cell reuseIdentifier
+    var identifier: String? {
+        switch self {
+        case .classOnly(let x):
+            return x
+        case .storyboard(let x):
+            return x
+        case .xibManual(let x):
+            return x
+        default:
+            return nil
+        }
+    }
 }
 
 /// Generic TableView Controller requiring Cell and Data associated types to be specified.
@@ -57,9 +72,10 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     /// Pass in CellType for a subController configured for that Cell type
     @discardableResult
-    public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
+    public func ofCell<T: UITableViewCell>(type: T.Type, cellTypeOption: ControllerCellTypeOption = .xibAuto) -> GeneralTableController<T, DataType> {
         let identifier = String(describing: T.self)
-        return genericTableControllerFor(identifier: identifier)
+        return genericTableControllerFor(identifier: identifier,
+                                         cellTypeOption: cellTypeOption)
     }
     
     /// function that determines which cell for `Data` and `IndexPath` 
@@ -84,13 +100,13 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     var subControllers = [String: TableControllable]()
     
-    func genericTableControllerFor<T>(identifier: String) -> GeneralTableController<T, DataType> {
+    func genericTableControllerFor<T>(identifier: String, cellTypeOption: ControllerCellTypeOption = .xibAuto) -> GeneralTableController<T, DataType> {
         //check if exists
         if let controller = subControllers[identifier] {
             return controller as! GeneralTableController<T, DataType>
         }
         //create controller
-        let controller = GeneralTableController<T, DataType>()
+        let controller = GeneralTableController<T, DataType>(cellTypeOption: cellTypeOption)
         controller.registerCell(tableView: tableView)
         controller.dataMirror(parentController: self)
         
@@ -176,11 +192,10 @@ open class GeneralTableController<CellType: UITableViewCell,
      handle cell registration and dequeue. defaults to `.xibAuto`
         - customIdentifier: if `cellTypeOptions` is set to `.xibAuto` field can be nil;
     */
-    public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto,
-                            customIdentifier: String? = nil) {
+    public convenience init(cellTypeOption: ControllerCellTypeOption = .xibAuto) {
         self.init()
         self.cellTypeOption = cellTypeOption
-        self.customIdentifier = customIdentifier
+        self.customIdentifier = cellTypeOption.identifier
     }
     
     //MARK: - Callback on Cell Actions -
