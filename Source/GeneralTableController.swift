@@ -43,10 +43,6 @@ public enum ControllerCellTypeOption {
 /// ```
 
 protocol TableControllable: class, UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     var cellType: Any.Type { get }
     var dataSourceAny: [[Any]] { get }
 }
@@ -57,6 +53,21 @@ open class GeneralTableController<CellType: UITableViewCell,
     /// Typealias for common tableView callback closure
     public typealias CallbackType = (CellType, DataType, IndexPath) -> Void
     
+    //MARK: - Multiple Cell Configuration -
+    
+    /// Pass in CellType for a subController configured for that Cell type
+    @discardableResult
+    public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
+        let identifier = String(describing: T.self)
+        return genericTableControllerFor(identifier: identifier)
+    }
+    
+    /// function that determines which cell for `Data` and `IndexPath` 
+    /// return cell using stringified using extension proeprty `.cellTypeIdentifier`
+    public var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
+        return nil
+    }
+    
     var cellType: Any.Type {
         return CellType.self
     }
@@ -65,24 +76,13 @@ open class GeneralTableController<CellType: UITableViewCell,
         return dataSource.map({ $0.flatMap({ val in val as Any })})
     }
     
-    weak var masterController: TableControllable?
+    weak var parentController: TableControllable?
     
-    func dataMirror(masterController: TableControllable) {
-        self.masterController = masterController
+    func dataMirror(parentController: TableControllable) {
+        self.parentController = parentController
     }
     
     var subControllers = [String: TableControllable]()
-    
-    @discardableResult
-    public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
-        var identifier = String(describing: type(of: type).self)
-        if identifier.contains(".") {
-            identifier = identifier.components(separatedBy: ".").first ?? ""
-        }
-        print("\(identifier), ofCell")
-
-        return genericTableControllerFor(identifier: identifier)
-    }
     
     func genericTableControllerFor<T>(identifier: String) -> GeneralTableController<T, DataType> {
         //check if exists
@@ -92,11 +92,12 @@ open class GeneralTableController<CellType: UITableViewCell,
         //create controller
         let controller = GeneralTableController<T, DataType>()
         controller.registerCell(tableView: tableView)
-        controller.dataMirror(masterController: self)
+        controller.dataMirror(parentController: self)
         
         subControllers[identifier] = controller
         return controller
     }
+    
     func tableControllableFor(identifier: String) -> TableControllable? {
         return subControllers[identifier]
     }
@@ -105,9 +106,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         return String(describing: CellType.self)
     }
     
-    public var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
-        return nil 
-    }
+    ///MARK: - Properties -
     
     /// Row height for each cell
     public var rowHeight: CGFloat = 44
@@ -138,8 +137,8 @@ open class GeneralTableController<CellType: UITableViewCell,
         didSet { tableView?.reloadData() }
     }
     var dataSource: [[DataType]] {
-        if let master = masterController {
-            return master.dataSourceAny.map({ $0.flatMap({val in val as? DataType})})
+        if let parent = parentController {
+            return parent.dataSourceAny.map({ $0.flatMap({val in val as? DataType})})
         } else {
             return _dataSource
         }
@@ -305,7 +304,6 @@ open class GeneralTableController<CellType: UITableViewCell,
         guard let identifier = cellTypeForIndexData(data, indexPath) else {
             return nil
         }
-        print(identifier)
         return subControllers[identifier]
     }
     
@@ -331,7 +329,6 @@ open class GeneralTableController<CellType: UITableViewCell,
             }
             return
         }
-        print("passed DidSelect \(cell)")
         didSelectCell(cell, data, indexPath)
     }
     
@@ -383,12 +380,7 @@ open class GeneralTableController<CellType: UITableViewCell,
 
 extension UITableViewCell {
     
-    public var cellTypeIdentifier: String {
-        print("instance")
-        return String(describing: self.self)
-    }
     public static var cellTypeIdentifier: String {
-        print("class")
         return String(describing: self.self)
     }
     
