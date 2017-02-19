@@ -88,8 +88,11 @@ class GeneralTableControllerTests: XCTestCase {
             XCTAssert(iPath.section == 0)
             expectation.fulfill()
         }
-        let indexPath = IndexPath(row: 2, section: 0)
-        let _ = controller.tableView(table, didSelectRowAt: indexPath)
+        let index = 2
+        let indexPath = IndexPath(row: index, section: 0)
+        let data = testNames[index]
+        let cell = controller.tableView(table, cellForRowAt: indexPath) as! NameCell
+        controller.didSelectCell(cell, data, indexPath)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
@@ -104,8 +107,11 @@ class GeneralTableControllerTests: XCTestCase {
             XCTAssert(iPath.section == 0)
             expectation.fulfill()
         }
-        let indexPath = IndexPath(row: 2, section: 0)
-        let _ = controller.tableView(table, didDeselectRowAt: indexPath)
+        let index = 2
+        let indexPath = IndexPath(row: index, section: 0)
+        let data = testNames[index]
+        let cell = controller.tableView(table, cellForRowAt: indexPath) as! NameCell
+        controller.didDeselectCell(cell, data, indexPath)
         waitForExpectations(timeout: 1.0, handler: nil)
     }
     
@@ -188,8 +194,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testManualXib() {
         let expectation = self.expectation(description: "should load cell")
         let identifier = "NameCellB"
-        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .xibManual,
-                                                                    customIdentifier: identifier)
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .xibManual(identifier))
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table
@@ -209,8 +214,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testClassOnlyCell() {
         let expectation = self.expectation(description: "should call `cellLoaded`")
         let identifier = "NameCell"
-        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .classOnly,
-                                                                         customIdentifier: identifier)
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .classOnly(identifier))
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table
