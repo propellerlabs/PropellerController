@@ -72,7 +72,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     @discardableResult
     public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
-        let identifier = String(describing: T.self)
+        let identifier = String(describing: type(of: type))
         
         print("\(identifier), ofCell")
         //exists already
@@ -337,7 +337,9 @@ open class GeneralTableController<CellType: UITableViewCell,
     
     func rerouteWillDisplay<T: UITableViewCell>(_ tableView: UITableView, willDisplay cell: T, forRowAt indexPath: IndexPath) {
         print("cell reroute is \(cell.self) and checks \(cell is NameTwoCell)")
-        ofCell(type: T.self).tableView(tableView,
+        print("CELL IDENTIFIER = \(String(describing: T.self))")
+        print("CELL type(of:)\(type(of: cell))")
+        ofCell(type: type(of: cell)).tableView(tableView,
                                        willDisplay: cell,
                                        forRowAt: indexPath)
     }
