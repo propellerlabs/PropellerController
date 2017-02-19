@@ -28,6 +28,7 @@ struct TableController {
         controller.didDeselectCell = { cell, _, _ in
             cell.backgroundColor = .white
         }
+         
         controller.cellTypeForIndexData = { data, iPath in
             if iPath.row % 2 == 0 {
                 return NameCell.cellTypeIdentifier
@@ -38,6 +39,12 @@ struct TableController {
 
         controller.ofCell(type: NameTwoCell.self)
             .cellLoaded = { cell, data, _ in
+                cell.nameTwoLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        
+        controller.ofCell(type: NameTwoCell.self)
+            .willDisplayCell = { cell, data, _ in
                 cell.nameTwoLabel.text = data.first
                 cell.backgroundColor = .orange
         }

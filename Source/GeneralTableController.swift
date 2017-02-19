@@ -74,6 +74,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     public func ofCell<T: UITableViewCell>(type: T.Type) -> GeneralTableController<T, DataType> {
         let identifier = String(describing: T.self)
         
+        print("\(identifier), ofCell")
         //exists already
         if let controller = subControllers[identifier] {
             return controller as! GeneralTableController<T, DataType>
@@ -334,10 +335,22 @@ open class GeneralTableController<CellType: UITableViewCell,
         didDeselectCell(cell, data, indexPath)
     }
     
+    func rerouteWillDisplay<T: UITableViewCell>(_ tableView: UITableView, willDisplay cell: T, forRowAt indexPath: IndexPath) {
+        print("cell reroute is \(cell.self) and checks \(cell is NameTwoCell)")
+        ofCell(type: T.self).tableView(tableView,
+                                       willDisplay: cell,
+                                       forRowAt: indexPath)
+    }
+    
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? CellType else { return }
+        guard let cellValue = cell as? CellType else {
+            rerouteWillDisplay(tableView,
+                               willDisplay: cell,
+                               forRowAt: indexPath)
+            return
+        }
         let data = dataSource[indexPath.section][indexPath.row]
-        willDisplayCell(cell, data, indexPath)
+        willDisplayCell(cellValue, data, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -363,7 +376,12 @@ open class GeneralTableController<CellType: UITableViewCell,
 
 extension UITableViewCell {
     
+    public var cellTypeIdentifier: String {
+        print("instance")
+        return String(describing: self.self)
+    }
     public static var cellTypeIdentifier: String {
+        print("class")
         return String(describing: self.self)
     }
     
