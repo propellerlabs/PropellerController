@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PropellerController Docs</a> (65% documented)</p>
+        <p><a href="index.html">PropellerController Docs</a> (63% documented)</p>
         <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fdocsets%2FPropellerController%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -55,6 +55,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITableViewCell.html">UITableViewCell</a>
               </li>
             </ul>
           </li>
@@ -99,7 +102,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">GeneralCollectionController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UICollectionViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UICollectionViewDataSource</span><span class="p">,</span> <span class="kt">UICollectionViewDelegate</span></code></pre>
 
                         </div>
                       </div>
@@ -126,36 +129,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Generic TableView Controller requiring Cell and Data associated types to be specified.
-Define class like so: <code>GeneralTableController&lt;SomeCellType, SomeDataType&gt;</code>.
-Using as below:</p>
-
-<pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nameSelection</span><span class="p">:</span> <span class="p">(</span><span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">table</span> <span class="k">in</span>
-   <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span><span class="p">()</span>
-   <span class="n">controller</span><span class="o">.</span><span class="n">tableView</span> <span class="o">=</span> <span class="n">table</span>
-
-   <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">iPath</span> <span class="k">in</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">first</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="nf">asyncSetImage</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">imagePath</span><span class="p">)</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s">"row:"</span> <span class="o">+</span> <span class="n">iPath</span><span class="o">.</span><span class="n">row</span>
-   <span class="p">}</span>
-   <span class="k">return</span> <span class="n">controller</span>
-<span class="p">}</span>
-</code></pre>
+                        <p>Undocumented</p>
 
                         <a href="Classes/GeneralTableController.html" class="slightly-smaller">See more</a>
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L44-L278">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L65-L394">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -186,7 +165,7 @@ Also, you can use <code>toggleSelection</code> function to manually invert a dat
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">GeneralMultiSelectionTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/GeneralTableController.html">GeneralTableController</a></span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">GeneralMultiSelectionTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span> <span class="kt">DataType</span><span class="p">:</span> <span class="kt">Hashable</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/GeneralTableController.html">GeneralTableController</a></span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -201,7 +180,7 @@ Also, you can use <code>toggleSelection</code> function to manually invert a dat
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5200B0E91E4142D500A328DB /* NameAgainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200B0E71E4142D500A328DB /* NameAgainCell.swift */; };
 		5200B0EA1E4142D500A328DB /* NameAgainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5200B0E81E4142D500A328DB /* NameAgainCell.xib */; };
+		523728D31E4EA7150098E3D9 /* NameTwoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523728D11E4EA7150098E3D9 /* NameTwoCell.swift */; };
+		523728D41E4EA7150098E3D9 /* NameTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523728D21E4EA7150098E3D9 /* NameTwoCell.xib */; };
+		5297B72C1E595EE100A3394D /* NameMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5297B72A1E595EE100A3394D /* NameMoreCell.swift */; };
+		5297B72D1E595EE100A3394D /* NameMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5297B72B1E595EE100A3394D /* NameMoreCell.xib */; };
 		52DF218D1E3A6D9600BEFE27 /* PropellerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DF21831E3A6D9600BEFE27 /* PropellerController.framework */; };
 		E309D2681E4107330052ACD1 /* UITableViewExtentionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D2671E4107330052ACD1 /* UITableViewExtentionTests.swift */; };
 		E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309D26A1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift */; };
@@ -45,6 +49,10 @@
 /* Begin PBXFileReference section */
 		5200B0E71E4142D500A328DB /* NameAgainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameAgainCell.swift; sourceTree = "<group>"; };
 		5200B0E81E4142D500A328DB /* NameAgainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameAgainCell.xib; sourceTree = "<group>"; };
+		523728D11E4EA7150098E3D9 /* NameTwoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameTwoCell.swift; sourceTree = "<group>"; };
+		523728D21E4EA7150098E3D9 /* NameTwoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameTwoCell.xib; sourceTree = "<group>"; };
+		5297B72A1E595EE100A3394D /* NameMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameMoreCell.swift; sourceTree = "<group>"; };
+		5297B72B1E595EE100A3394D /* NameMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameMoreCell.xib; sourceTree = "<group>"; };
 		52DF21831E3A6D9600BEFE27 /* PropellerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PropellerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF218C1E3A6D9600BEFE27 /* PropellerControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PropellerControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E309D2671E4107330052ACD1 /* UITableViewExtentionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtentionTests.swift; sourceTree = "<group>"; };
@@ -151,9 +159,13 @@
 		E3F513EB1E4100D5002CDA10 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5297B72A1E595EE100A3394D /* NameMoreCell.swift */,
+				5297B72B1E595EE100A3394D /* NameMoreCell.xib */,
 				5200B0E71E4142D500A328DB /* NameAgainCell.swift */,
 				5200B0E81E4142D500A328DB /* NameAgainCell.xib */,
 				E3F513EC1E4100D5002CDA10 /* NameCell.swift */,
+				523728D11E4EA7150098E3D9 /* NameTwoCell.swift */,
+				523728D21E4EA7150098E3D9 /* NameTwoCell.xib */,
 				E3F513ED1E4100D5002CDA10 /* NameCell.xib */,
 				E3F513EE1E4100D5002CDA10 /* TestCollectionViewCell.swift */,
 				E3F513EF1E4100D5002CDA10 /* TestCollectionViewCell.xib */,
@@ -273,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E309D26D1E41086F0052ACD1 /* TestTableViewHeaderFooterView.xib in Resources */,
+				523728D41E4EA7150098E3D9 /* NameTwoCell.xib in Resources */,
+				5297B72D1E595EE100A3394D /* NameMoreCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F513FF1E4100D5002CDA10 /* UICollectionView+Extension.swift in Sources */,
+				5297B72C1E595EE100A3394D /* NameMoreCell.swift in Sources */,
+				523728D31E4EA7150098E3D9 /* NameTwoCell.swift in Sources */,
 				E309D26B1E4108650052ACD1 /* TestTableViewHeaderFooterView.swift in Sources */,
 				E3F513FA1E4100D5002CDA10 /* GeneralCollectionController.swift in Sources */,
 				E3F514001E4100D5002CDA10 /* UITableView+Extension.swift in Sources */,

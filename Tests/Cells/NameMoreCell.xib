@@ -6,33 +6,34 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="NameCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="NameCell" id="KGk-i7-Jjw" customClass="NameCell" customModule="PropellerControllerTests" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameMoreCell" id="KGk-i7-Jjw" customClass="NameMoreCell" customModule="PropellerController" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfk-LR-L7V">
-                        <rect key="frame" x="15" y="15" width="91" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vm-Hj-u0F">
+                        <rect key="frame" x="18" y="11" width="52" height="21"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
+                        <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="sfk-LR-L7V" secondAttribute="bottom" constant="15" id="D2M-Bw-vnv"/>
-                    <constraint firstItem="sfk-LR-L7V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oMr-Pn-RS0"/>
-                    <constraint firstItem="sfk-LR-L7V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="tfy-Nv-Qw4"/>
+                    <constraint firstItem="0vm-Hj-u0F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="8zv-nn-9vJ"/>
+                    <constraint firstItem="0vm-Hj-u0F" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mDW-ip-71z"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="nameLabel" destination="sfk-LR-L7V" id="k42-TN-7lT"/>
+                <outlet property="titleLabel" destination="0vm-Hj-u0F" id="Mxg-cJ-WXK"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -14,7 +14,7 @@
     <a title="GeneralTableController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">PropellerController Docs</a> (65% documented)</p>
+        <p><a href="../index.html">PropellerController Docs</a> (63% documented)</p>
         <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fdocsets%2FPropellerController%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -57,6 +57,9 @@
               <li class="nav-group-task">
                 <a href="../Extensions/UICollectionView.html">UICollectionView</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableViewCell.html">UITableViewCell</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -65,64 +68,19 @@
         <section>
           <section class="section">
             <h1>GeneralTableController</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                </div>
-              </div>
-            <p>Generic TableView Controller requiring Cell and Data associated types to be specified.
-Define class like so: <code>GeneralTableController&lt;SomeCellType, SomeDataType&gt;</code>.
-Using as below:</p>
-
-<pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">nameSelection</span><span class="p">:</span> <span class="p">(</span><span class="kt">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{</span> <span class="n">table</span> <span class="k">in</span>
-   <span class="k">let</span> <span class="nv">controller</span> <span class="o">=</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">NameCell</span><span class="p">,</span> <span class="kt">NameData</span><span class="o">&gt;</span><span class="p">()</span>
-   <span class="n">controller</span><span class="o">.</span><span class="n">tableView</span> <span class="o">=</span> <span class="n">table</span>
-
-   <span class="n">controller</span><span class="o">.</span><span class="n">willDisplayCell</span> <span class="o">=</span> <span class="p">{</span> <span class="n">cell</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">iPath</span> <span class="k">in</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">first</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="nf">asyncSetImage</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">imagePath</span><span class="p">)</span>
-       <span class="n">cell</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s">"row:"</span> <span class="o">+</span> <span class="n">iPath</span><span class="o">.</span><span class="n">row</span>
-   <span class="p">}</span>
-   <span class="k">return</span> <span class="n">controller</span>
-<span class="p">}</span>
-</code></pre>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Multiple%20Cell%20Configuration"></a>
+                <a name="//apple_ref/swift/Section/Multiple Cell Configuration" class="dashAnchor"></a>
+                <a href="#/Multiple%20Cell%20Configuration">
+                  <h3 class="section-name">Multiple Cell Configuration</h3>
+                </a>
+              </div>
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat"></a>
-                    <a name="//apple_ref/swift/Property/rowHeight" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat">rowHeight</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Row height for each cell</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rowHeight</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">44</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L51">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -148,7 +106,99 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L48">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L69">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC19PropellerController22GeneralTableController6ofCelluRd__CSo15UITableViewCellrFT4typeMqd__14cellTypeOptionOS_24ControllerCellTypeOption_GS0_qd__q__"></a>
+                    <a name="//apple_ref/swift/Method/ofCell(type:cellTypeOption:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableController6ofCelluRd__CSo15UITableViewCellrFT4typeMqd__14cellTypeOptionOS_24ControllerCellTypeOption_GS0_qd__q__">ofCell(type:cellTypeOption:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pass in CellType for a subController configured for that Cell type</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">ofCell</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">cellTypeOption</span><span class="p">:</span> <span class="kt"><a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">xibAuto</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span> <span class="kt">DataType</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L75-L79">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController20cellTypeForIndexDataFTq_V10Foundation9IndexPath_GSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/cellTypeForIndexData" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController20cellTypeForIndexDataFTq_V10Foundation9IndexPath_GSqSS_">cellTypeForIndexData</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>function that determines which cell for <code>Data</code> and <code>IndexPath</code> 
+return cell using stringified using extension proeprty <code>.cellTypeIdentifier</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cellTypeForIndexData</span><span class="p">:</span> <span class="p">(</span><span class="kt">DataType</span><span class="p">,</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L83">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat"></a>
+                    <a name="//apple_ref/swift/Property/rowHeight" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC19PropellerController22GeneralTableController9rowHeightV12CoreGraphics7CGFloat">rowHeight</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>MARK: - Properties -
+ Row height for each cell</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rowHeight</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="o">=</span> <span class="mi">44</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L128">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -178,7 +228,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L54">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L131">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -208,7 +258,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L57">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L134">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -238,7 +288,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L60">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L137">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -268,7 +318,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L66-L72">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L143-L149">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -298,7 +348,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L80-L82">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L164-L166">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -328,7 +378,7 @@ Using as below:</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L85-L87">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L169-L171">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -359,7 +409,7 @@ dataSource, cell registration, after this value is set</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L91-L95">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L175-L179">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -367,9 +417,9 @@ dataSource, cell registration, after this value is set</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption16customIdentifierGSqSS__GS0_xq__"></a>
-                    <a name="//apple_ref/swift/Method/init(cellTypeOption:customIdentifier:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption16customIdentifierGSqSS__GS0_xq__">init(cellTypeOption:customIdentifier:)</a>
+                    <a name="/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption_GS0_xq__"></a>
+                    <a name="//apple_ref/swift/Method/init(cellTypeOption:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC19PropellerController22GeneralTableControllercFT14cellTypeOptionOS_24ControllerCellTypeOption_GS0_xq__">init(cellTypeOption:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -394,8 +444,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cellTypeOption</span><span class="p">:</span> <span class="kt"><a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">xibAuto</span><span class="p">,</span>
-                            <span class="nv">customIdentifier</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cellTypeOption</span><span class="p">:</span> <span class="kt"><a href="../Enums/ControllerCellTypeOption.html">ControllerCellTypeOption</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">xibAuto</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -433,7 +482,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L111-L116">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L195-L199">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -475,7 +524,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L122">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L205">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -506,7 +555,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L126">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L209">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -537,7 +586,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L130">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L213">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -568,7 +617,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L134">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L217">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -610,7 +659,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L140">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L223">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -662,7 +711,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L152">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L235">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -708,7 +757,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L162">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L245">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -743,7 +792,7 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L171">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L254">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -775,17 +824,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L211-L214">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L297-L300">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -806,17 +846,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L216-L218">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L302-L304">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -837,17 +868,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L220-L222">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L306-L308">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -868,17 +890,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L224-L226">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L310-L312">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -899,17 +912,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L228-L230">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L314-L316">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -930,17 +934,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L232-L239">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L325-L336">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -961,17 +956,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L241-L245">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L338-L348">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -992,17 +978,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L247-L251">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L350-L360">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1023,17 +1000,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L253-L257">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L362-L373">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1054,17 +1022,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L259-L261">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L375-L377">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1085,17 +1044,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L263-L265">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L379-L381">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1116,17 +1066,8 @@ handle cell registration and dequeue. defaults to <code>.xibAuto</code></li>
                         <p>Undocumented</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeneralTableController</span><span class="o">&lt;</span><span class="kt">CellType</span><span class="p">:</span> <span class="kt">UITableViewCell</span><span class="p">,</span>
-                            <span class="kt">DataType</span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">UITableViewDataSource</span><span class="p">,</span> <span class="kt">UITableViewDelegate</span></code></pre>
-
-                        </div>
-                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L267-L269">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L383-L385">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1157,7 +1098,7 @@ you simple goto top of table (y = 0 position).</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L273-L277">Show on GitHub</a>
+                        <a href="https://github.com/propellerlabs/PropellerController/tree/master/Source/GeneralTableController.swift#L389-L393">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1167,7 +1108,7 @@ you simple goto top of table (y = 0 position).</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

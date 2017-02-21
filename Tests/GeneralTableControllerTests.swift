@@ -194,8 +194,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testManualXib() {
         let expectation = self.expectation(description: "should load cell")
         let identifier = "NameCellB"
-        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .xibManual,
-                                                                    customIdentifier: identifier)
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .xibManual(identifier))
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table
@@ -215,8 +214,7 @@ class GeneralTableControllerTests: XCTestCase {
     func testClassOnlyCell() {
         let expectation = self.expectation(description: "should call `cellLoaded`")
         let identifier = "NameCell"
-        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .classOnly,
-                                                                         customIdentifier: identifier)
+        let controller = GeneralTableController<NameAgainCell, NameData>(cellTypeOption: .classOnly(identifier))
         let frame = CGRect(x: 0, y: 0, width: 30, height: 10000)
         let table = UITableView(frame: frame)
         controller.tableView = table

@@ -13,7 +13,7 @@
     <a title="PropellerController  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">PropellerController Docs</a> (65% documented)</p>
+        <p><a href="index.html">PropellerController Docs</a> (63% documented)</p>
         <p class="header-right"><a href="https://github.com/propellerlabs/PropellerController"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fgithub%2Ecom%2Fpropellerlabs%2FPropellerController%2Ftree%2Fmaster%2FSource%2Fdocs%2Fdocsets%2FPropellerController%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -55,6 +55,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/UICollectionView.html">UICollectionView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITableViewCell.html">UITableViewCell</a>
               </li>
             </ul>
           </li>
@@ -136,40 +139,87 @@ controller.setDataSource(dataSource)
 </code></pre>
 
 <p>For <strong>UICollectionView</strong> we have you covered, just use <code>GeneralCollectionController</code> instead.</p>
-<a href='#4-want-to-handle-multiple-selections' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='4-want-to-handle-multiple-selections'>4. Want to handle multiple selections?</h3>
+<a href='#4-you-can-have-multiple-cell-types-on-one-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='4-you-can-have-multiple-cell-types-on-one-controller'>4. You can have multiple cell types on one controller!</h3>
+
+<p><em>see example project</em>
+- Same process as before with <code>ofCell</code> function for extra cells:</p>
+<pre class="highlight plaintext"><code>struct TableController {
+
+    typealias NameTableType = GeneralTableController&lt;NameCell, NameData&gt;
+
+    static var nameTableController: (UITableView) -&gt; NameTableType = { table in
+        let controller = NameTableType()
+        controller.tableView = table
+        controller.setDataSource(testNames + testNames)
+
+        //which cell to choose
+        controller.cellTypeForIndexData = { data, iPath in
+            if iPath.row % 3 == 0 {
+                return NameAgainCell.cellTypeIdentifier
+            } else if iPath.row % 2 == 0 {
+                return NameCell.cellTypeIdentifier
+            } else {
+                return NameTwoCell.cellTypeIdentifier
+            }
+        } 
+
+        //cell 1
+        controller.willDisplayCell = { cell, data, _ in
+            cell.nameLabel.text = data.first
+        }
+
+        //cell 2
+        controller.ofCell(type: NameTwoCell.self)
+            .willDisplayCell = { cell, data, _ in
+                cell.nameTwoLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+
+        //cell 3
+        controller.ofCell(type: NameAgainCell.self, 
+                          cellTypeOption: .xibManual("NameCellB")))
+            .willDisplayCell = { cell, data, _ in
+                cell.nameAgainLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        return controller
+    }
+</code></pre>
+<a href='#5-want-to-handle-multiple-selections' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='5-want-to-handle-multiple-selections'>5. Want to handle multiple selections?</h3>
 
 <p>We got you covered with <strong>GeneralMultiSelectionTableController</strong></p>
 
 <ul>
-<li><p>We configure it the same way:
-&ldquo;`Swift
-struct TableController {</p>
-
-<p>static let sampleData = [<q>Item one</q>, <q>Item two</q>]</p>
-
-<p>&hellip;.</p>
-
-<p>static var nameMultiSelection: (UITableView) -&gt; GeneralMultiSelectionTableController<NameCell, String> = { table in
-    let controller = GeneralMultiSelectionTableController<NameCell, String>()
-    controller.tableView = table
-    controller.setDataSource(sampleData)
-    return controller
-}
-&rdquo;`</p></li>
-<li><p>Except now we can get a <code>Set</code> of all of the selected <code>Hashable</code> DataType for selected cells:
-&ldquo;`Swift
-let seletedNames = TableNameController.selectionSource</p>
-
-<p>for name in selectedNames {
-    print(<q>\(name) was selected!</q>)
-}
-&rdquo;`</p></li>
+<li>We configure it the same way:</li>
 </ul>
+<pre class="highlight plaintext"><code>struct TableController {
+
+    static let sampleData = ["Item one", "Item two"]
+
+    ....
+
+    static var nameMultiSelection: (UITableView) -&gt; GeneralMultiSelectionTableController&lt;NameCell, String&gt; = { table in
+        let controller = GeneralMultiSelectionTableController&lt;NameCell, String&gt;()
+        controller.tableView = table
+        controller.setDataSource(sampleData)
+        return controller
+    }
+</code></pre>
+
+<ul>
+<li>Except now we can get a <code>Set</code> of all of the selected <code>Hashable</code> DataType for selected cells:</li>
+</ul>
+<pre class="highlight plaintext"><code>    let seletedNames = TableNameController.selectionSource
+
+    for name in selectedNames {
+        print("\(name) was selected!")
+    }
+</code></pre>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-07)</p>
+          <p>&copy; 2017 <a class="link" href="http://www.propellerlabs.co" target="_blank" rel="external">Propeller</a>. All rights reserved. (Last updated: 2017-02-18)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

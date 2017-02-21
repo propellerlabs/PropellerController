@@ -91,12 +91,60 @@ controller.setDataSource(dataSource)
 
 For **UICollectionView** we have you covered, just use `GeneralCollectionController` instead.
 
+### 4. You can have multiple cell types on one controller!
+*see example project*
+- Same process as before with `ofCell` function for extra cells:
 
-### 4. Want to handle multiple selections? 
+```Swift
+struct TableController {
+    
+    typealias NameTableType = GeneralTableController<NameCell, NameData>
+    
+    static var nameTableController: (UITableView) -> NameTableType = { table in
+        let controller = NameTableType()
+        controller.tableView = table
+        controller.setDataSource(testNames + testNames)
+        
+        //which cell to choose
+        controller.cellTypeForIndexData = { data, iPath in
+            if iPath.row % 3 == 0 {
+                return NameAgainCell.cellTypeIdentifier
+            } else if iPath.row % 2 == 0 {
+                return NameCell.cellTypeIdentifier
+            } else {
+                return NameTwoCell.cellTypeIdentifier
+            }
+        } 
+        
+        //cell 1
+        controller.willDisplayCell = { cell, data, _ in
+            cell.nameLabel.text = data.first
+        }
+
+        //cell 2
+        controller.ofCell(type: NameTwoCell.self)
+            .willDisplayCell = { cell, data, _ in
+                cell.nameTwoLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        
+        //cell 3
+        controller.ofCell(type: NameAgainCell.self, 
+                          cellTypeOption: .xibManual("NameCellB")))
+            .willDisplayCell = { cell, data, _ in
+                cell.nameAgainLabel.text = data.first
+                cell.backgroundColor = .orange
+        }
+        return controller
+    }
+```
+
+### 5. Want to handle multiple selections? 
 
 We got you covered with **GeneralMultiSelectionTableController**
 
 - We configure it the same way:
+
 ```Swift
 struct TableController {
     
@@ -112,6 +160,7 @@ struct TableController {
     }
 ```
 - Except now we can get a `Set` of all of the selected `Hashable` DataType for selected cells:
+
 ```Swift
     let seletedNames = TableNameController.selectionSource
     
