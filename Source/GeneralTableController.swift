@@ -79,7 +79,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
     
     /// function that determines which cell for `Data` and `IndexPath` 
-    /// return cell using stringified using extension proeprty `.cellTypeIdentifier`
+    /// return cell using stringified using extension proeprty `.typeIdentifier`
     public var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
         return nil
     }
@@ -118,7 +118,7 @@ open class GeneralTableController<CellType: UITableViewCell,
         return subControllers[identifier]
     }
     
-    var cellTypeIdentifier: String {
+    var typeIdentifier: String {
         return String(describing: CellType.self)
     }
     
@@ -395,7 +395,7 @@ open class GeneralTableController<CellType: UITableViewCell,
 
 extension UITableViewCell {
     
-    public static var cellTypeIdentifier: String {
+    public static var typeIdentifier: String {
         return String(describing: self.self)
     }
     
