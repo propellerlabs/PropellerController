@@ -73,6 +73,26 @@ open class GeneralCollectionController<CellType: UICollectionViewCell, DataType>
         return .zero
     }
     
+    /// Callback that takes `UIScrollView` and executes a closure
+    /// when a scrollView did scroll
+    public var scrollViewDidScroll: (UIScrollView) -> Void = { _ in }
+    
+    /// Callback that takes `UIScrollView` and executes a closure
+    /// when a scrollView did end scrolling animation
+    public var scrollViewDidEndScrollingAnimation: (UIScrollView) -> Void = { _ in }
+    
+    /// Callback that takes `UIScrollView` and executes a closure
+    /// when a scrollView did end dragging
+    public var scrollViewDidEndDragging: (UIScrollView) -> Void = { _ in }
+    
+    /// Callback that takes `UIScrollView` and executes a closure
+    /// when a scrollView will begin dragging
+    public var scrollViewWillBeginDragging: (UIScrollView) -> Void = { _ in }
+    
+    /// Callback that takes `UIScrollView` and executes a closure
+    /// when a scrollView is ending deceleration
+    public var scrollViewDidEndDecelerating: (UIScrollView) -> Void = { _ in }
+    
     //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
     
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -108,6 +128,26 @@ open class GeneralCollectionController<CellType: UICollectionViewCell, DataType>
         let cell = collectionView.dequeueReusableCellWithClass(CellType.self, forIndexPath: indexPath)!
         let data = dataSource[indexPath.section][indexPath.row]
         didSelectCell(cell, data, indexPath)
+    }
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScroll(scrollView)
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        scrollViewDidEndScrollingAnimation(scrollView)
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollViewDidEndDragging(scrollView)
+    }
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewWillBeginDragging(scrollView)
+    }
+    
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        scrollViewDidEndDecelerating(scrollView)
     }
 }
 
