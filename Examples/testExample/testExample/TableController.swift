@@ -20,16 +20,13 @@ struct TableController {
         
         //which cell to choose
         controller.cellTypeForIndexData = { data, iPath in
-            if iPath.row % 3 == 0 {
-                return NameAgainCell.cellTypeIdentifier
-            } else if iPath.row % 2 == 0 {
-                return NameCell.cellTypeIdentifier
-            } else {
-                return NameTwoCell.cellTypeIdentifier
+            switch iPath.row % 3 {
+            case 1: return NameTwoCell.typeIdentifier
+            case 2: return NameAgainCell.typeIdentifier
+            default: return NameCell.typeIdentifier
             }
         }
-        
-        
+
         //cell 1
         controller.willDisplayCell = { cell, data, _ in
             cell.nameLabel.text = data.first
@@ -90,5 +87,6 @@ struct TableController {
         }
         return controller
     }
+
 }
 
