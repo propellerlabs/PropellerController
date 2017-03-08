@@ -107,14 +107,12 @@ struct TableController {
         
         //which cell to choose
         controller.cellTypeForIndexData = { data, iPath in
-            if iPath.row % 3 == 0 {
-                return NameAgainCell.self
-            } else if iPath.row % 2 == 0 {
-                return NameCell.self
-            } else {
-                return NameTwoCell.self
+            switch iPath.row % 3 {
+            case 1: return NameTwoCell.self
+            case 2: return NameAgainCell.self
+            default: return NameCell.self
             }
-        } 
+        }
         
         //cell 1
         controller.willDisplayCell = { cell, data, _ in

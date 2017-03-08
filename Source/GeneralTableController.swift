@@ -79,7 +79,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
     
     /// function that determines which cell for `Data` and `IndexPath` 
-    /// return cell using stringified using extension proeprty `.typeIdentifier`
+    /// return cell type with `.self`
     public var cellTypeForIndexData: (DataType, IndexPath) -> UITableViewCell.Type =  {_, _ in return CellType.self}
     
     var cellType: Any.Type {
