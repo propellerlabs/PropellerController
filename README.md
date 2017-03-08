@@ -108,11 +108,11 @@ struct TableController {
         //which cell to choose
         controller.cellTypeForIndexData = { data, iPath in
             if iPath.row % 3 == 0 {
-                return NameAgainCell.cellTypeIdentifier
+                return NameAgainCell.self
             } else if iPath.row % 2 == 0 {
-                return NameCell.cellTypeIdentifier
+                return NameCell.self
             } else {
-                return NameTwoCell.cellTypeIdentifier
+                return NameTwoCell.self
             }
         } 
         

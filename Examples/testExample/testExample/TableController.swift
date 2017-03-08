@@ -21,9 +21,9 @@ struct TableController {
         //which cell to choose
         controller.cellTypeForIndexData = { data, iPath in
             switch iPath.row % 3 {
-            case 1: return NameTwoCell.typeIdentifier
-            case 2: return NameAgainCell.typeIdentifier
-            default: return NameCell.typeIdentifier
+            case 1: return NameTwoCell.self
+            case 2: return NameAgainCell.self
+            default: return NameCell.self
             }
         }
 
