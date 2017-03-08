@@ -81,16 +81,6 @@ open class GeneralTableController<CellType: UITableViewCell,
     /// function that determines which cell for `Data` and `IndexPath` 
     /// return cell using stringified using extension proeprty `.typeIdentifier`
     public var cellTypeForIndexData: (DataType, IndexPath) -> UITableViewCell.Type =  {_, _ in return CellType.self}
-
-//    public typealias DataIndexCellType = (DataType, IndexPath) -> UITableViewCell.Type
-//
-//    public var celltypeindex2: DataIndexCellType = {_, _ in return CellType.self}
-
-    /// function that determines which cell for `Data` and `IndexPath`
-    /// return cell using stringified using extension proeprty `.typeIdentifier`
-    func cell2TypeForIndexData<T: UITableViewCell>(a: DataType, b: IndexPath) -> T.Type? {
-        return nil
-    }
     
     var cellType: Any.Type {
         return CellType.self
