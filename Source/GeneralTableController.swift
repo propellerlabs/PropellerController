@@ -79,10 +79,8 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
     
     /// function that determines which cell for `Data` and `IndexPath` 
-    /// return cell using stringified using extension proeprty `.typeIdentifier`
-    public var cellTypeForIndexData: (DataType, IndexPath) -> String? = { _, _ in
-        return nil
-    }
+    /// return cell type with `.self`
+    public var cellTypeForIndexData: (DataType, IndexPath) -> UITableViewCell.Type =  {_, _ in return CellType.self}
     
     var cellType: Any.Type {
         return CellType.self
@@ -316,9 +314,7 @@ open class GeneralTableController<CellType: UITableViewCell,
     }
     
     func routeTableController(data: DataType, indexPath: IndexPath) -> TableControllable? {
-        guard let identifier = cellTypeForIndexData(data, indexPath) else {
-            return nil
-        }
+        let identifier = cellTypeForIndexData(data, indexPath).typeIdentifier
         return subControllers[identifier]
     }
     
@@ -395,7 +391,7 @@ open class GeneralTableController<CellType: UITableViewCell,
 
 extension UITableViewCell {
     
-    public static var typeIdentifier: String {
+    fileprivate static var typeIdentifier: String {
         return String(describing: self.self)
     }
     
